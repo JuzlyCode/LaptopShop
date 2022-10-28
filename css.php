@@ -17,7 +17,6 @@
     }
 
     html {
-        /* Font size = 10px */
         font-size: 62.5%;
         line-height: 1.6rem;
         font-family: 'Roboto', sans-serif;
