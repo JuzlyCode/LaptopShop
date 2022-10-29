@@ -15,7 +15,9 @@
         <div class="grid">
             <div class="header-container">
                 <div class="header-container__logo">
-                    <img src="./assets/imgs/containerHeader/Logo.jpg" alt="Logo" class="header-container__logo-size">
+                    <a href=".">
+                        <img src="./assets/imgs/containerHeader/Logo.png" alt="Logo" class="header-container__logo-size">
+                    </a>
                 </div>
                 <div class="header-container__search">
 

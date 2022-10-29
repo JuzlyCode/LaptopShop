@@ -1,3 +1,4 @@
+<!-- SELECT * FROM `products` WHERE `price` >= 5000000 AND `price` <= 10000000 -->
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -12,7 +13,7 @@
         include './conect_db.php';
         session_start();
         $result = mysqli_query($con, "SELECT * FROM user");
-        $search = isset($_GET['name'])? $_GET['name'] : "";
+        $search = isset($_GET['search'])? $_GET['search'] : "";
         if(!empty($_GET['limit'])&&!empty($_GET['page'])){
             $getLimit = $_GET['limit'];
             $getOffset = $_GET['page'];
@@ -28,6 +29,15 @@
             $rowProducts = mysqli_query($con, "SELECT * FROM `products`")->num_rows;
             $products = mysqli_query($con, "SELECT * FROM `products` ORDER BY `id` ASC limit ".$getLimit." OFFSET ".$offset."");
         }
+        if (isset($_GET['discount'])){
+          $rowProducts = mysqli_query($con, "SELECT * FROM `products` WHERE `discount`")->num_rows;
+          $products = mysqli_query($con, "SELECT * FROM `products` WHERE `discount` ORDER BY `id` ASC limit ".$getLimit." OFFSET ".$offset."");
+        }
+        if (isset($_GET['form']) && isset($_GET['to'])){
+            $rowProducts = mysqli_query($con, "SELECT * FROM `products` WHERE `price`")->num_rows;
+            $products = mysqli_query($con, "SELECT * FROM `products` WHERE `price` >= ".($_GET['form']*1000000)." AND `price` <= ".($_GET['to']*1000000)." ORDER BY `id` ASC limit ".$getLimit." OFFSET ".$offset."");
+        }
+        
         $totalpages = ceil($rowProducts / $getLimit);
         mysqli_close($con);
         // 
@@ -66,11 +76,13 @@
       <div class="grid">
         <div class="header-container">
           <div class="header-container__logo">
-            <img src="./assets/imgs/containerHeader/Logo.jpg" alt="Logo" class="header-container__logo-size">
+            <a href=".">
+              <img src="./assets/imgs/containerHeader/Logo.png" alt="Logo" class="header-container__logo-size">
+            </a>
           </div>
           <div class="header-container__search">
             <form class="header-container__search" action="" method="GET">
-            <input class="header-container__search-input" type="text" placeholder="Bạn muốn tìm sản phẩm gì?" name="name">
+            <input class="header-container__search-input" type="text" placeholder="Bạn muốn tìm sản phẩm gì?" name="search">
             <button class="header-container__search-icon" style="padding-top:0;" type="submit"><i class="fa-solid fa-magnifying-glass"></i></button>
             </form>
           </div>
@@ -120,7 +132,9 @@
                 </li>
                 <li class="header-menu_product-item">
                   <i class="fix-item-icon fa-brands fa-hotjar"></i>
-                  <p class="product-item_name">Khuyến Mãi</p>
+                  <a href="./?discount" style="text-decoration: none; color:var(--white-text);">
+                    <p class="product-item_name">Khuyến Mãi</p>
+                  </a>
                 </li>
               </ul>
             </div>
@@ -181,20 +195,20 @@
           <div class="container-header">
             <div class="container-header__land">
               <div class="container-header__box">
-                <p class="container-header__text" style="max-width: calc(100% - 32px);">Học tập - Văn phòng</p>
+                <p class="container-header__text" style="max-width: calc(100% - 32px);">Sản Phẩm mới</p>
               </div>
               <div class="container-price">
                 <p class="container-price__text">mức giá:</p>
-                <a class="container-proce__link" href="">
+                <a class="container-proce__link" href="./?form=5&to=10">
                   <p class="container-price__about">5 triệu - 10 triệu</p>
                 </a>
-                <a class="container-proce__link" href="">
+                <a class="container-proce__link" href="./?form=10&to=20">
                   <p class="container-price__about">10 triệu - 20 triệu</p>
                 </a>
-                <a class="container-proce__link" href="">
+                <a class="container-proce__link" href="./?form=20&to=30">
                   <p class="container-price__about">20 triệu - 30 triệu</p>
                 </a>
-                <a class="container-proce__link" href="">
+                <a class="container-proce__link" href="./?form=30&to=100">
                   <p class="container-price__about">Trên 30 triệu</p>
                 </a>
               </div>
@@ -207,7 +221,7 @@
               <img src="<?=$inProduct['img']?>" alt="1" class="container-products__item-img"> <?php
                                 if ($inProduct['discount'] !== '0'){
                             ?> <div class="product-discount"></div>
-              <div class="product-discount-persent">- <?=$inProduct['discount']?>% </div> <?php
+              <div class="product-discount-persent">-<?=$inProduct['discount']?>% </div> <?php
                                 }
                             ?> <div class="container-products__item-review" style="margin-top:10px; min-height: 50px;">
                 <a href="" class="container-products__item-review-link">
@@ -215,14 +229,14 @@
                 </a>
               </div> <?php
                                 if ($inProduct['discount'] == '0'){
-                                    ?> <div style="display: flex; margin-top:10px; margin-bottom:20px;">
-                <p style="display:inline-block; line-height:16px; font-style: italic; font-weight:550; color:red; font-size:20px;"> <?=number_format($inProduct['price'])?>đ </p> <?php
+                                    ?> <div style="display: flex; justify-content: center; margin-top:10px; margin-bottom:20px;">
+                <p style="display:inline-block; line-height:16px; font-style: italic; font-weight:550; color:var(--color-red); font-size:20px;"> <?=number_format($inProduct['price'])?>đ </p> <?php
                                 }else{
                                     $newprice = $inProduct['price'] - (($inProduct['price']/100)*$inProduct['discount']);
                                     
                                     ?> <div style="display: flex; margin-top:10px; justify-content: space-between; width:70%;">
                   <p style="display:inline-block; line-height:16px; font-size:16px; color: #a29c9cd7; text-decoration: line-through;"> <?=number_format($inProduct['price'])?>đ </p>
-                  <p style="display:inline-block; line-height:16px; font-style: italic; font-weight:550; color:red; font-size:20px;"> <?=number_format($newprice)?>đ </p> <?php
+                  <p style="display:inline-block; line-height:16px; font-style: italic; font-weight:550; color:var(--color-red); font-size:20px; margin:0 auto;<?php if(isset($_GET['discount'])) { ?>margin-bottom: 20px;<?php } ?>"> <?=number_format($newprice)?>đ </p> <?php
                                 }
                                 ?>
                 </div>

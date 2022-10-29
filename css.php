@@ -4,9 +4,10 @@
         --text-white: #fff;
         --black-color: #000;
         --text-color: rgb(89, 88, 88);
-        --color-shop: #2b80dd;
+        --color-shop: #38B6FF;
         --hover-text: rgb(226, 107, 51);
         --hover-box: #ededed;
+        --color-red: #FF1616;
     }
 
     * {
@@ -74,6 +75,8 @@
 
     .header-container__logo {
         display: flex;
+        width: 200px;
+        justify-content: center;
     }
 
     .header-container__logo-size {
@@ -249,8 +252,6 @@
         position: relative;
     }
 
-
-
     .container-price__text {
         z-index: 1;
         font-size: 12px;
@@ -406,10 +407,10 @@
 
     .product-discount-persent {
         position: absolute;
-        width: 44px;
+        width: 45px;
         top: 10px;
-        right: 0px;
-        color: red;
+        right: -1px;
+        color: var(--color-red);
         font-size: 16px;
         font-weight: 550;
         opacity: .8;
