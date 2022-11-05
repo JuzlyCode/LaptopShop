@@ -68,6 +68,7 @@
         }
         mysqli_close($con);
         if ($error !== false || $result->num_rows == 0) {
+            include './css.php';
     ?>
             <div class="body">
                 <div class="grid">
@@ -133,5 +134,4 @@
 <?php
 include './css.php';
 ?>
-
 </html>

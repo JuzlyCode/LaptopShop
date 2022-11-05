@@ -52,130 +52,89 @@
             </div>
         </div>
     </div>
-    <!-- Login -->
-    <?php
-    include "./conect_db.php";
-    $result = mysqli_query($con, "SELECT * FROM user");
-    mysqli_close($con);
-    session_start();
-    if (empty($_GET)) {
-    ?>
-        <meta http-equiv="refresh" content="0;url=./">
-        <?php
-    } else {
-        if (isset($_GET['upload'])) {
-            var_dump($_GET);
-        }
-
-        if (isset($_GET['listuser'])) {
-
-            if (!empty($_SESSION['current_user']) && $_SESSION['current_user']['status'] == 'admin') {
-                // $ss = $result->fetch_array();
-                // var_dump($ss);exit;
-                $userList = [];
-                $adminList = [];
-                $userPlus = 0;
-                $adminPlus = 0;
-                for ($i = 0; $i < $result->num_rows; $i++) {
-                    $row = mysqli_fetch_array($result);
-                    if ($row['status'] == 'user') {
-                        $userList[$userPlus] = $row;
-                        $userPlus++;
-                    } else {
-                        $adminList[$adminPlus] = $row;
-                        $adminPlus++;
-                    }
-                }
-                // var_dump($userList);exit;
-        ?>
-                <div class="body">
-                    <div class="grid">
-                        <table style="margin:0 auto; margin-top:30px; width:70%; border: 1px solid;">
-
-                            <tr>
-                                <th colspan="6" style="padding:10px; font-size:18px; border:1px solid;">Admin</th>
-                            </tr>
-
-                            <tr style="text-align: center;">
-                                <td>ID</td>
-                                <td>User</td>
-                                <td>Status</td>
-                                <td>Date Create</td>
-                                <td>Xóa</td>
-                                <td>Sửa</td>
-                            </tr>
-                            <?php
-
-                            for ($i = 0; $i < count($adminList); $i++) {
-                                $row = $adminList;
-
-                            ?>
-                                <tr style="text-align: center;">
-                                    <td><?= $row[$i]['id'] ?></td>
-                                    <td><?= $row[$i]['username'] ?></td>
-                                    <td><?= $row[$i]['status'] ?></td>
-                                    <td><?= date('d/m/Y H:i', $row[$i]['creat_date']) ?></td>
-                                    <td><a href="./edit_user.php?id=<?= $row[$i]['id'] ?>">Sửa</a></td>
-                                    <td><a href="./delete_user.php?id=<?= $row[$i]['id'] ?>">Xóa</a></td>
-                                </tr>
-                            <?php
-                            }
-                            ?>
-                        </table>
-
-
-                        <table style="margin:0 auto; margin-top:30px; width:70%; border:1px solid;">
-                            <tr style="margin-top:50px;">
-                                <th colspan="6" style="padding:10px; font-size:18px; border:1px solid;">User</th>
-                            </tr>
-
-                            <tr style="text-align: center;">
-                                <td>ID</td>
-                                <td>User</td>
-                                <td>Status</td>
-                                <td>Date Create</td>
-                                <td>Xóa</td>
-                                <td>Sửa</td>
-                            </tr>
-                            <?php
-
-                            for ($i = 0; $i < count($userList); $i++) {
-                                $row = $userList;
-
-                            ?>
-                                <tr style="text-align: center;">
-                                    <td><?= $row[$i]['id'] ?></td>
-                                    <td><?= $row[$i]['username'] ?></td>
-                                    <td><?= $row[$i]['status'] ?></td>
-                                    <td><?= date('d/m/Y H:i', $row[$i]['creat_date']) ?></td>
-                                    <td><a href="./edit_user.php?id=<?= $row[$i]['id'] ?>">Sửa</a></td>
-                                    <td><a href="./delete_user.php?id=<?= $row[$i]['id'] ?>">Xóa</a></td>
-                                </tr>
-                            <?php
-                            }
-                            ?>
-                        </table>
+    <div class="body">
+        <div class="grid">
+            <div class="grid_flex">
+                <div class="grid_flex-left">
+                    <div class="grid_flex-left__item">
+                        <ul class="grid_flex-left__ul">
+                            <li class="grid_flex-left__li">
+                                <a href="./admin.php" class="grid_flex-left__a">ADmin Page</a>
+                            </li>
+                            <li class="grid_flex-left__li">
+                                <a href="./admin.php?listuser" class="grid_flex-left__a">List User</a>
+                            </li>
+                            <li class="grid_flex-left__li">
+                                <a href="./admin.php?upload" class="grid_flex-left__a">Upload Sản Phẩm</a>
+                            </li>
+                            <li class="grid_flex-left__li">
+                                <a href="" class="grid_flex-left__a">Upload Ảnh</a>
+                            </li>
+                        </ul>
                     </div>
                 </div>
-            <?php
-            } else {
-            ?>
-                <meta http-equiv="refresh" content="0;url=./login.php">
-    <?php
-            }
-        }
-    }
-    ?>
+                <div class="grid_flex-right">
+                    <?php
+                    if(empty($_GET)){
+                        ?>
+                        <img class="grid_flex-right__img" src="./assets/imgs/admin/setting.png" alt="txt">
+                        <?php
+                    }
+                    if(isset($_GET['listuser'])){
+                        include './listuser.php';
+                    }
+                    if(isset($_GET['upload'])){
+                        include './upload.php';
+                    }
+                    ?>
+                </div>
+            </div>
+        </div>
+    </div>
 </body>
-<style>
-    td {
-        min-width: 100px;
-        padding: 10px;
-        border: 1px solid #000;
-    }
-</style>
 <?php
 include './css.php';
 ?>
+<style>
+    .grid_flex {
+        display: flex;
+        margin-top: 40px;
+    }
+    .grid_flex-left {
+        width: 18%;
+        box-shadow: 0 0 3px var(--color-shop);
+        border-radius: 15px ;
+    }
+    .grid_flex-right {
+        width: 82%;
+        margin-bottom: 30px;
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+    .grid_flex-left__item {
+        margin-top: 20px;
+        padding: 20px 0 100px 0;
+    }
+    .grid_flex-left__ul {
+        list-style: none;
+    }
+    .grid_flex-left__li {
+        margin: 0 10px;
+        padding: 20px 20px 5px 20px;
+        border-bottom: 1px solid var(--color-shop);
+    }
+    .grid_flex-left__a {
+        text-decoration: none;
+        color: var(--black-color);
+        font-size: 16px;
+    }
+    .grid_flex-left__a:hover {
+        color: var(--color-shop);
+    }
+    .grid_flex-right__img {
+        width: 30%;
+    }
+</style>
 
 </html>

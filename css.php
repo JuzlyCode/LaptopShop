@@ -301,6 +301,10 @@
         margin: 0 20px;
         color: var(--text-color);
         margin-bottom: 10px;
+        font-size: 14px;
+        max-height: 36px;
+        line-height: 18px;
+        overflow: hidden;
     }
 
     /* style create */
