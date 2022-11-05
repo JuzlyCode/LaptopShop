@@ -81,10 +81,10 @@
                         <?php
                     }
                     if(isset($_GET['listuser'])){
-                        include './listuser.php';
+                        include './user/listuser.php';
                     }
                     if(isset($_GET['upload'])){
-                        include './upload.php';
+                        include './product/upload.php';
                     }
                     ?>
                 </div>

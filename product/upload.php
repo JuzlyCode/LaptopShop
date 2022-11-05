@@ -35,8 +35,9 @@ if (!empty($_FILES)){
     ?>
 </table>
     <?php
+    unset($_FILES);
 }else{
-    include "./formPic.php";
+    include "./product/formPic.php";
 }
 ?>
 </fieldset>
@@ -56,10 +57,10 @@ if (!empty($_FILES)){
     if(!empty($_POST['submit'])){
         if($_POST['discountProduct'] == "")
         $_POST['discountProduct'] = "0";
-        $upload = mysqli_query($con, "INSERT INTO `products` (`id`, `img`, `title`, `review`, `price`, `discount`) VALUES (NULL, '".$_POST['imgProduct']."', '".$_POST['nameProduct']."', '".$_POST['reviewProduct']."', '".$_POST['priceProduct']."', '".$_POST['discountProduct']."');");
+        $upload = mysqli_query($con, "INSERT INTO `products` (`id`, `img`, `title`, `review`, `price`, `discount`, `quantity`) VALUES (NULL, '".$_POST['imgProduct']."', '".$_POST['nameProduct']."', '".$_POST['reviewProduct']."', '".$_POST['priceProduct']."', '".$_POST['discountProduct']."' , '".$_POST['quantityProduct']."');");
         $alo = "Thêm sản phẩm thành công";
     }
-    include "./upproduct.php";
+    include "./product/upproduct.php";
     echo "$alo";
 ?>
 </fieldset>

@@ -20,7 +20,11 @@
         <tr class="table-upprd__list">
             <td class="table-upprd__item">Discount sản phẩm:</td>
             <td><input type="number" class="upprd-input" name="discountProduct"><br /></td>
-        </tr>    
+        </tr> 
+        <tr class="table-upprd__list">
+            <td class="table-upprd__item">Số lượng SP trong kho:</td>
+            <td><input type="number" class="upprd-input" name="quantityProduct"><br /></td>
+        </tr>     
     </table>
     <input type="submit" class="upprd-submit" name="submit" value="Upload Product">
 </form>
@@ -57,5 +61,11 @@
 }
 .fieldset-upload {
     margin-bottom: 30px;
+}
+.upload_form-table {
+    margin: 20px;
+}
+.upload_form-td {
+    padding: 10px;
 }
 </style>

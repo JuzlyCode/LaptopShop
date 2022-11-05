@@ -134,7 +134,7 @@ if ($_SESSION['current_user']['status'] == 'admin') {
 ?> <a href="" class="more-list_user-link">
 <li class="more-list_menu-item">Thông tin User</li>
 </a>
-<a href="./edit_user.php?id=
+<a href="./user/edit_user.php?id=
 <?= $_SESSION['current_user']['id'] ?>" class="more-list_user-link">
 <li class="more-list_menu-item">Đổi mật khẩu</li>
 </a>
@@ -152,7 +152,7 @@ if ($_SESSION['current_user']['status'] == 'admin') {
 <a class="header-menu_product-link product-link_style" href="./login.php">Đăng nhập</a>
 </li>
 <li class="header-menu_product-item">
-<a class="header-menu_product-link product-link_style" href="./create.php">đăng ký</a>
+<a class="header-menu_product-link product-link_style" href="./user/create.php">đăng ký</a>
 </li> <?php
 
 }

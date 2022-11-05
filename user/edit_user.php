@@ -15,8 +15,8 @@
         <div class="grid">
             <div class="header-container">
                 <div class="header-container__logo">
-                    <a href=".">
-                        <img src="./assets/imgs/containerHeader/Logo.png" alt="Logo" class="header-container__logo-size">
+                    <a href="../index.php">
+                        <img src="../assets/imgs/containerHeader/Logo.png" alt="Logo" class="header-container__logo-size">
                     </a>
                 </div>
                 <div class="header-container__search">
@@ -32,7 +32,7 @@
                 <div class="header-menu-flex">
                     <div class="header-menu_product">
                         <ul class="header-menu_product-list">
-                            <a href="./index.php" class="header-menu_product-link">
+                            <a href="../index.php" class="header-menu_product-link">
                                 <li class="header-menu_product-item">
                                     <i class="fix-item-icon fa-solid fa-house"></i>
                                     <p class="product-item_name">Home</p>
@@ -54,7 +54,7 @@
     <!-- edit -->
     <?php
     session_start();
-    include "./conect_db.php";
+    include "../conect_db.php";
     if (!empty($_SESSION['current_user'])) {
         $result = mysqli_query($con, "SELECT * FROM user");
         $error = false;
@@ -200,7 +200,7 @@
 </body>
 <!-- style create -->
 <?php
-include './css.php';
+include '../css.php';
 ?>
 </style>
 

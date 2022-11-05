@@ -15,8 +15,8 @@
         <div class="grid">
             <div class="header-container">
                 <div class="header-container__logo">
-                    <a href=".">
-                        <img src="./assets/imgs/containerHeader/Logo.png" alt="Logo" class="header-container__logo-size">
+                    <a href="../index.php">
+                        <img src="../assets/imgs/containerHeader/Logo.png" alt="Logo" class="header-container__logo-size">
                     </a>
                 </div>
                 <div class="header-container__search">
@@ -32,7 +32,7 @@
                 <div class="header-menu-flex">
                     <div class="header-menu_product">
                         <ul class="header-menu_product-list">
-                            <a href="./index.php" class="header-menu_product-link">
+                            <a href="../index.php" class="header-menu_product-link">
                                 <li class="header-menu_product-item">
                                     <i class="fix-item-icon fa-solid fa-house"></i>
                                     <p class="product-item_name">Home</p>
@@ -53,7 +53,7 @@
     </div>
     <!-- Login -->
     <?php
-    include "./conect_db.php";
+    include "../conect_db.php";
     $error = false;
     $errorPassword = false;
     if (isset($_GET['action']) && $_GET['action'] == 'create') {
@@ -113,7 +113,7 @@
             session_start();
             $_SESSION['ok_creat'] = $_POST['creat-ok'];
         ?>
-            <meta http-equiv="refresh" content="0;url=./login.php">
+            <meta http-equiv="refresh" content="0;url=../login.php">
         <?php
         }
     } else {
@@ -141,7 +141,7 @@
     <?php } ?>
 </body>
 <?php
-include './css.php';
+include '../css.php';
 ?>
 
 </html>
