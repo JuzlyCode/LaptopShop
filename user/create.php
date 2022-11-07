@@ -5,52 +5,11 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="./assets/fonts/fontawesome-free-6.2.0-web/css/all.min.css">
+    <link rel="stylesheet" href="../assets/fonts/fontawesome-free-6.2.0-web/css/all.min.css">
     <title>Sell LapTop</title>
 </head>
 
-<body style="background-color: rgb(241, 241, 240);">
-    <!-- Header -->
-    <div id="header">
-        <div class="grid">
-            <div class="header-container">
-                <div class="header-container__logo">
-                    <a href="../index.php">
-                        <img src="../assets/imgs/containerHeader/Logo.png" alt="Logo" class="header-container__logo-size">
-                    </a>
-                </div>
-                <div class="header-container__search">
-
-                </div>
-                <div class="header-container__cart">
-
-                </div>
-            </div>
-        </div>
-        <div class="header-menu">
-            <div class="grid">
-                <div class="header-menu-flex">
-                    <div class="header-menu_product">
-                        <ul class="header-menu_product-list">
-                            <a href="../index.php" class="header-menu_product-link">
-                                <li class="header-menu_product-item">
-                                    <i class="fix-item-icon fa-solid fa-house"></i>
-                                    <p class="product-item_name">Home</p>
-                                </li>
-                            </a>
-                        </ul>
-                    </div>
-                    <div class="header-menu_user">
-                        <ul class="header-menu_product-list">
-                            <li class="header-menu_product-item">
-                                đăng nhập
-                            </li>
-                        </ul>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
+<body class="body-class">
     <!-- Login -->
     <?php
     include "../conect_db.php";
@@ -78,8 +37,9 @@
                     <div class="form-login" style="background-color: var(--white-color); padding:50px; padding-bottom:100px;">
                         <h1 style="text-align:center; margin-bottom:30px;">Tạo không thành công!</h1>
                         <form class="form-flex" action="./create.php?action=create" method="Post" autocomplete="off">
+                            
                             <div class="form-login__input-size">
-                                <p class="form-login__input-text">User:</p>
+                                
                                 <input type="text" placeholder="User Name" name="username" class="form-login__input" value="">
                             </div>
                             <?php
@@ -90,7 +50,7 @@
                             }
                             ?>
                             <div class="form-login__input-size">
-                                <p class="form-login__input-text">Password :</p>
+                                
                                 <input type="password" placeholder="Password" name="password" class="form-login__input" value="">
                             </div>
                             <?php
@@ -113,7 +73,7 @@
             session_start();
             $_SESSION['ok_creat'] = $_POST['creat-ok'];
         ?>
-            <meta http-equiv="refresh" content="0;url=../login.php">
+            <meta http-equiv="refresh" content="0;url=./login.php">
         <?php
         }
     } else {
@@ -122,12 +82,13 @@
             <div class="grid">
                 <div class="form-login" style="background-color: var(--white-color); padding:50px; padding-bottom:100px;">
                     <form class="form-flex" action="./create.php?action=create" method="Post" autocomplete="off">
+                    <h1 style="margin-bottom: 30px; font-size:15px; text-transform:uppercase; text-align: center;">Đăng ký tài khoản</h1>
                         <div class="form-login__input-size">
-                            <p class="form-login__input-text">User:</p>
+                            
                             <input type="text" placeholder="User Name" name="username" class="form-login__input" value="">
                         </div>
                         <div class="form-login__input-size">
-                            <p class="form-login__input-text">Password :</p>
+                            
                             <input type="password" placeholder="Password" name="password" class="form-login__input" value="">
                         </div>
                         <input type="hidden" name="creat-ok" value="okok">

@@ -1,12 +1,12 @@
 <?php
-    include "./conect_db.php";
+    include "../conect_db.php";
     $result = mysqli_query($con, "SELECT * FROM user");
 // xóa user
 if (isset($_GET['delete_user']) && isset($_GET['id'])){
     $id=$_GET['id'];
     mysqli_query($con, "DELETE FROM `user` WHERE `user`.`id` = ".$id."");
     ?>
-    <meta http-equiv="refresh" content="0;url=./listuser.php">
+    <meta http-equiv="refresh" content="0;url=./admin.php?listuser">
     <?php
 }
 mysqli_close($con);
@@ -27,10 +27,10 @@ mysqli_close($con);
                     }
                 }
         ?>
-                        <table style=" margin-top:30px; width:70%; border: 1px solid;">
+                        <table style=" margin-top:30px; width:70%; ">
 
                             <tr>
-                                <th colspan="6" style="padding:10px; font-size:18px; border:1px solid;">Admin</th>
+                                <th colspan="6" style="padding:10px; font-size:18px;">Admin</th>
                             </tr>
 
                             <tr style="text-align: center;">
@@ -52,8 +52,8 @@ mysqli_close($con);
                                     <td><?= $row[$i]['username'] ?></td>
                                     <td><?= $row[$i]['status'] ?></td>
                                     <td><?= date('d/m/Y H:i', $row[$i]['creat_date']) ?></td>
-                                    <td><a href="./edit_user.php?id=<?= $row[$i]['id'] ?>">Sửa</a></td>
-                                    <td><a href="./listuser.php?delete_user&id=<?= $row[$i]['id'] ?>">Xóa</a></td>
+                                    <td><a href="./edit_user.php?id=<?= $row[$i]['id'] ?>" class="style-fix_user">Sửa</a></td>
+                                    <td><a href="./admin.php?listuser&delete_user&id=<?= $row[$i]['id'] ?>" class="style-delete_user">Xóa</a></td>
                                 </tr>
                             <?php
                             }
@@ -61,9 +61,9 @@ mysqli_close($con);
                         </table>
 
 
-                        <table style=" margin-top:30px; width:70%; border:1px solid;">
+                        <table style=" margin-top:30px; margin-bottom:30px; width:70%;">
                             <tr style="margin-top:50px;">
-                                <th colspan="6" style="padding:10px; font-size:18px; border:1px solid;">User</th>
+                                <th colspan="6" style="padding:10px; font-size:18px;">User</th>
                             </tr>
 
                             <tr style="text-align: center;">
@@ -80,13 +80,13 @@ mysqli_close($con);
                                 $row = $userList;
 
                             ?>
-                                <tr style="text-align: center;">
+                                <tr class="listuser__tr" style="text-align: center;">
                                     <td><?= $row[$i]['id'] ?></td>
                                     <td><?= $row[$i]['username'] ?></td>
                                     <td><?= $row[$i]['status'] ?></td>
                                     <td><?= date('d/m/Y H:i', $row[$i]['creat_date']) ?></td>
-                                    <td><a href="./edit_user.php?id=<?= $row[$i]['id'] ?>">Sửa</a></td>
-                                    <td><a href="./listuser.php?delete_user&id=<?= $row[$i]['id'] ?>">Xóa</a></td>
+                                    <td><a href="./edit_user.php?id=<?= $row[$i]['id'] ?>" class="style-fix_user">Sửa</a></td>
+                                    <td><a href="./admin.php?listuser&delete_user&id=<?= $row[$i]['id'] ?>" class="style-delete_user">Xóa</a></td>
                                 </tr>
                             <?php
                             }
@@ -95,12 +95,19 @@ mysqli_close($con);
 
 </body>
 <style>
-    td {
-        min-width: 100px;
-        padding: 10px;
-        border: 1px solid #000;
+    table {
+        background-color: var(--color-shop);
+        border-radius: 10px;
+        overflow: hidden;
+    }
+    td{
+        padding: 20px;
+        background-color: var(--white-color);
+    }
+    th {
+        color:var(--white-color);
     }
 </style>
 <?php
-include './css.php';
+include '../css.php';
 ?>

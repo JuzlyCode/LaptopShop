@@ -4,7 +4,7 @@
         --text-white: #fff;
         --black-color: #000;
         --text-color: rgb(89, 88, 88);
-        --color-shop: #38B6FF;
+        --color-shop: #2b80dd;
         --hover-text: rgb(226, 107, 51);
         --hover-box: #ededed;
         --color-red: #FF1616;
@@ -57,6 +57,16 @@
 
         }
     }
+    /* body */
+    .body-class {
+        background-image:url('../assets/imgs/background/login.jpg');
+        position: fixed;
+        top: 0; left: 0; bottom: 0; right: 0;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
 
     /* Header */
 
@@ -309,9 +319,11 @@
 
     /* style create */
     .form-login {
-        width: 400px;
+        width: 500px;
+        height: 500px;
         margin: 0 auto;
         margin-top: 30px;
+        border-radius: 10px;
     }
 
     .form-flex {
@@ -319,26 +331,30 @@
 
     }
 
-    .form-login__input-size {}
+    .form-login__input-size {
+        
+    }
 
     .form-login__input {
+        border-radius: 5px;
         margin-top: 3px;
         margin-bottom: 10px;
         width: 100%;
-        padding: 5px 10px;
+        padding: 15px 25px;
         border: solid 1px var(--color-shop);
     }
 
     .form-login__btn-size {}
 
     .form-login__btn-style {
-        padding: 5px 10px;
+        padding: 12px 30px;
         background-color: var(--color-shop);
         border: none;
-        border-radius: 2px;
+        border-radius: 5px;
         color: var(--text-white);
         float: right;
-        margin: 0 20px;
+        margin-top: 10px;
+        font-size: 15px;
     }
 
     .header-menu_product-link {
@@ -440,6 +456,7 @@
         top: 110%;
         right: 10%;
         z-index: 2;
+        min-width: 150px;
         background-color: var(--white-color);
         display: none;
     }
@@ -487,4 +504,30 @@
     .hover_dot-down:hover .user-icon-dot {
         display: inline-block;
     }
+
+/* list user */
+.style-fix_user {
+    padding: 8px 28px;
+    background: #56e656;
+    border-radius: 10px;
+    color: var(--text-white);
+    text-decoration: none;
+    font-size: 11px;
+    font-weight: bold;
+}
+.style-delete_user {
+    padding: 8px 28px;
+    background: #fc7058;
+    border-radius: 10px;
+    color: var(--text-white);
+    text-decoration: none;
+    font-size: 11px;
+    font-weight: bold;
+}
+
+.style-delete_user:hover,
+.style-fix_user:hover {
+    opacity: .5;
+}
+
 </style>

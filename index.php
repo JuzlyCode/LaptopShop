@@ -41,12 +41,6 @@ $products = mysqli_query($con, "SELECT * FROM `products` WHERE `price` >= " . ($
 
 $totalpages = ceil($rowProducts / $getLimit);
 mysqli_close($con);
-if (!empty($_POST) && $_POST['logout'] == 'logout') {
-unset($_SESSION['current_user']);
-?>
-<!-- reset post = logout -->
-<meta http-equiv="refresh" content="0;url=./"> <?php
-}
 ?>
 <!-- Header -->
 <div id="header">
@@ -127,7 +121,7 @@ if (!empty($_SESSION['current_user'])) {
 <i class="user-icon-dot fa-solid fa-circle" style="font-size:8px; margin-left:5px;"></i>
 <ul class="more-list_user-menu"> <?php
 if ($_SESSION['current_user']['status'] == 'admin') {
-?> <a href="./admin.php" class="more-list_user-link">
+?> <a href="./user/admin.php" class="more-list_user-link">
 <li class="more-list_menu-item">Admin Page</li>
 </a> <?php
 }
@@ -138,18 +132,15 @@ if ($_SESSION['current_user']['status'] == 'admin') {
 <?= $_SESSION['current_user']['id'] ?>" class="more-list_user-link">
 <li class="more-list_menu-item">Đổi mật khẩu</li>
 </a>
-<form method="Post">
-<li class="more-list_menu-item">
-<input type="hidden" name="logout" value="logout">
-<input class="more-list_menu-item input_logout" style="border:none; background:var(--white-color);" type="submit" value="Đăng Xuất">
-</li>
-</form>
+<a href="./user/logout.php?logout" class="more-list_user-link">
+<li class="more-list_menu-item">Đăng xuất</li>
+</a>
 </ul>
 </li> <?php
 } else {
 
 ?> <li class="header-menu_product-item">
-<a class="header-menu_product-link product-link_style" href="./login.php">Đăng nhập</a>
+<a class="header-menu_product-link product-link_style" href="./user/login.php">Đăng nhập</a>
 </li>
 <li class="header-menu_product-item">
 <a class="header-menu_product-link product-link_style" href="./user/create.php">đăng ký</a>
@@ -165,7 +156,12 @@ if ($_SESSION['current_user']['status'] == 'admin') {
 </div>
 <div class="body">
 <div class="grid">
-<div style="height: 500px;" class="slider"></div>
+<div style="height: 500px;" class="slider">
+<div style="height: 500px; margin-top:10px;">
+
+  <img src="https://laptopaz.vn/media/banner/15_Jul61774c36e93704bf449eabe1846e635f.jpg" alt="" style="width:100%; height:100%;">
+</div>
+</div>
 <div class="container">
 <div class="container-header">
 <div class="container-header__land">
@@ -233,3 +229,4 @@ include './page.php';
 include './css.php';
 ?>
 </html>
+<?php
