@@ -5,13 +5,13 @@
         --black-color: #000;
         --text-color: rgb(89, 88, 88);
         --color-shop: #2b80dd;
+        --clshop-hover: #115fb4;
         --hover-text: rgb(226, 107, 51);
         --hover-box: #ededed;
         --color-red: #FF1616;
     }
 
     * {
-        text-transform: capitalize;
         box-sizing: inherit;
         margin: 0;
         padding: 0;
@@ -156,6 +156,10 @@
         position: relative;
     }
 
+    .header-menu_product-item:hover {
+        background-color: var(--clshop-hover);
+    }
+
     .product-item_name {
         text-transform: uppercase;
     }
@@ -165,7 +169,8 @@
         padding-top: 10px;
         flex-wrap: wrap;
         list-style: none;
-        top: 110%;
+        left: 0;
+        top: 127%;
         position: absolute;
         background-color: var(--white-color);
         color: var(--text-color);
@@ -178,8 +183,8 @@
         content: "";
         position: absolute;
         width: 100%;
-        height: 10px;
-        top: -7px;
+        height: 15px;
+        top: -10px;
     }
 
     .header-menu_product-list li:hover .more-list_menu {
@@ -196,6 +201,7 @@
         font-size: 15px;
         font-weight: 400;
         color: var(--text-color);
+        text-transform: capitalize;
     }
 
     .menu-item__layout {
@@ -241,6 +247,9 @@
         width: 25%;
         padding: 10px 10px;
         background-color: var(--color-shop);
+        background-image: url(./assets/imgs/header-menu/bg_title.png);
+        background-repeat: no-repeat;
+        background-position: right center;
     }
 
 
@@ -250,6 +259,7 @@
     }
 
     .container-header__land {
+        background-color: var(--white-color);
         display: flex;
         justify-content: space-between;
     }
@@ -290,6 +300,7 @@
     .container-products__item-img {
         height: 228px;
         width: 228px;
+        max-width: 100%;
     }
 
     .container-products__item {
@@ -320,10 +331,23 @@
     /* style create */
     .form-login {
         width: 500px;
-        height: 500px;
+        
         margin: 0 auto;
         margin-top: 30px;
         border-radius: 10px;
+        background-color: var(--white-color); 
+        padding:60px;
+    }
+
+    .logo__Login {
+        width: 100px;
+    }
+
+    .space-logo__login {
+        width: 100%;
+        display: flex;
+        justify-content: center;
+        margin-bottom: 20px;
     }
 
     .form-flex {
@@ -356,6 +380,21 @@
         margin-top: 10px;
         font-size: 15px;
     }
+    .clear{
+        clear: both;
+    }
+    .form-login__Blank {
+        font-size: 13px;
+        color: #888;
+        display: block;
+        text-align: center;
+        margin-top: 30px;
+    }
+    .form-login__Blank-a {
+        font-weight: 550;
+        color:var(--color-shop);
+        text-decoration:none;
+    }
 
     .header-menu_product-link {
         text-decoration: none !important;
@@ -383,7 +422,7 @@
         position: relative;
     }
 
-    .container-price::before {
+    /* .container-price::before {
         content: "";
         position: absolute;
         top: 0;
@@ -392,8 +431,8 @@
         height: 100%;
         background: var(--white-color);
         transform: skew(65deg);
-        /* display: none; */
-    }
+       
+    } */
 
     /* page product */
 

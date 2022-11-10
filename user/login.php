@@ -30,7 +30,12 @@
     ?>
             <div class="body">
                 <div class="grid">
-                    <div class="form-login" style="background-color: var(--white-color); padding:50px; padding-bottom:100px;">
+                    <div class="form-login">
+                        <div class="space-logo__login">   
+                    <a href="../">
+                    <img src="../assets/imgs/containerHeader/Logo.png" class="logo__Login" alt="">
+                        </a>
+                    </div>
                         <form class="form-flex" action="./login.php?action=reg" method="Post" autocomplete="off">
                             <div class="form-login__input-size">
                                 <p class="form-login__input-text" style="color: red;">* thông tin không chính xác</p>
@@ -45,6 +50,8 @@
                                 <input class="form-login__btn-style" type="submit" value="Đăng nhập">
                             </div>
                         </form>
+                        <div class="clear"></div>
+                        <label class="form-login__Blank">bạn chưa có tài khoản? <a href="../user/create.php" class="form-login__Blank-a">Đăng ký</a></label>
                     </div>
                 </div>
             </div>
@@ -56,15 +63,20 @@
         ?>
         <div class="body">
             <div class="grid">
-                <div class="form-login" style="background-color: var(--white-color); padding:50px; padding-bottom:100px;">
+                <div class="form-login">
+                    <div class="space-logo__login">   
+                    <a href="../">
+                    <img src="../assets/imgs/containerHeader/Logo.png" class="logo__Login" alt="">
+                        </a>
+                    </div>
                     <?php
                     if (!empty($_SESSION['ok_creat'])) {
                     ?>
-                        <h1 style="text-align:center; margin-bottom:30px; color:green;">Tạo tài khoản thành công!</h1>
+                        <h1 style="text-align:center; margin-bottom:30px; color:green;">Đăng ký tài khoản thành công!</h1>
                     <?php
                     }
                     ?>
-                    <h1 style="text-align:center; margin-bottom:30px;">Đăng Nhập</h1>
+                    
                     <form class="form-flex" action="./login.php?action=reg" method="Post" autocomplete="off">
                         <div class="form-login__input-size">
                             
@@ -74,10 +86,12 @@
                             
                             <input type="password" placeholder="Password" name="password" required="" class="form-login__input" value="">
                         </div>
-                        <div class="form-login__btn-size">
+                        <div class="form-login__btn-size" style="width:100%;">
                             <input class="form-login__btn-style" type="submit" value="Đăng nhập">
                         </div>
                     </form>
+                    <div class="clear"></div>
+                    <label class="form-login__Blank">bạn chưa có tài khoản? <a href="../user/create.php" class="form-login__Blank-a">Đăng ký</a></label>
                 </div>
             </div>
         </div>

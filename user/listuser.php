@@ -1,6 +1,6 @@
 <?php
     include "../conect_db.php";
-    $result = mysqli_query($con, "SELECT * FROM user");
+    $result = mysqli_query($con, "SELECT * FROM `user` ORDER BY `user`.`id` ASC");
 // xóa user
 if (isset($_GET['delete_user']) && isset($_GET['id'])){
     $id=$_GET['id'];
