@@ -10,10 +10,41 @@
     // }
     $alo = "";
     if(!empty($_POST['submit']) && $_POST['submit'] == 'UpProduct'){
+            $alo = "Thêm sản phẩm thành công!";
+            // kiểm tra và thông báo.
+            if(strlen($_POST['nameProduct'])>300)
+            $alo = "Tên sản phẩm không được dài quá 300 ký tự";
+            if(strlen($_POST['reviewProduct'])>600)
+            $alo = "Giới thiệu phẩm không được dài quá 600 ký tự";
+            if(strlen($_POST['priceProduct'])>11)
+            $alo = "Giá không được hơn 11 số";
+            if(strlen($_POST['priceProduct'])>11)
+            $alo = "Giá không được hơn 11 số";
+            if(strlen($_POST['quantityProduct'])>11)
+            $alo = "Số lượng không được hơn 11 số";
+            // kiểm tra hàm bắt buộc rỗng
+            $test = "";
+            if($_POST['imgProduct'] == "")
+            $test .= " ảnh,";
+            if($_POST['nameProduct'] == "")
+            $test .= " tên,";
+            if($_POST['priceProduct'] == "")
+            $test .= " giá tiền,";
+            if($_POST['quantityProduct'] == "")
+            $test .= " số lượng,";
+            if ($test !== ""){
+                $alo = "Không được để trống:  $test";
+            }
+            // kiểm tra dis rỗng
             if($_POST['discountProduct'] == "")
             $_POST['discountProduct'] = "0";
-            $upload = mysqli_query($con, "INSERT INTO `products` (`id`, `img`, `title`, `review`, `price`, `discount`, `quantity` , `manufacturer`) VALUES (NULL, '".$_POST['imgProduct']."', '".$_POST['nameProduct']."', '".$_POST['reviewProduct']."', '".$_POST['priceProduct']."', '".$_POST['discountProduct']."' , '".$_POST['quantityProduct']."', '".$_POST['manufacturer']."');");
-            $alo = "Thêm sản phẩm thành công!";
+            // kiểm tra giảm giá
+            if((int)$_POST['discountProduct'] > 100)
+                $alo = "Không được giảm giá hơn 100%";
+
+            if($alo == "Thêm sản phẩm thành công!"){
+                $upload = mysqli_query($con, "INSERT INTO `products` (`id`, `img`, `title`, `review`, `price`, `discount`, `quantity` , `manufacturer`) VALUES (NULL, '".$_POST['imgProduct']."', '".$_POST['nameProduct']."', '".$_POST['reviewProduct']."', '".$_POST['priceProduct']."', '".$_POST['discountProduct']."' , '".$_POST['quantityProduct']."', '".$_POST['manufacturer']."');");
+            }
     }
 ?>
     <div class="div-in4mAlo">
@@ -24,5 +55,15 @@
 ?>
 </fieldset>
 </div>
+<style>
+.div-in4mAlo {
+    margin-top: 10px;
+    display: flex;
+}
+.in4mAlo {
+    font-size: 18px;
+    margin: auto;
+}
+</style>
 
 

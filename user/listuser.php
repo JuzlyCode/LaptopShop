@@ -108,6 +108,3 @@ mysqli_close($con);
         color:var(--white-color);
     }
 </style>
-<?php
-include '../css.php';
-?>

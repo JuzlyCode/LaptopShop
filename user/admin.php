@@ -5,6 +5,8 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../assets/css/adminpage.css">
+    <link rel="stylesheet" href="../assets/css/style.css">
     <link rel="stylesheet" href="../assets/fonts/fontawesome-free-6.2.0-web/css/all.min.css">
     <title>Sell LapTop</title>
 </head>
@@ -88,6 +90,9 @@
                             <li class="grid_flex-left__li">
                                 <a href="./admin.php?upload" class="grid_flex-left__a">Upload Sản Phẩm</a>
                             </li>
+                            <li class="grid_flex-left__li">
+                                <a href="./admin.php?dsSpham" class="grid_flex-left__a">Danh Sách Sản Phẩm</a>
+                            </li>
                         </ul>
                     </div>
                 </div>
@@ -107,74 +112,16 @@
                     if(isset($_GET['uploadimg'])){
                         include '../product/uploadimg.php';
                     }
+                    if(isset($_GET['dsSpham'])){
+                        include '../product/listproduct.php';
+                    }
+                    if(isset($_GET['idproduct']) || isset($_GET['delete_product']) ){
+                        include '../product/fixproduct.php';
+                    }
                     ?>
                 </div>
             </div>
         </div>
     </div>
 </body>
-<?php
-include '../css.php';
-?>
-<style>
-    .left__link-header {
-        text-decoration: none;
-        font-size: 16px;
-        color: var(--white-color);
-    }
-    .grid_flex-left__header {
-        width: 100%;
-    }
-    .grid_flex-left__header-text {
-        text-align: center;
-        padding: 10px;
-        background: var(--color-shop);
-    }
-    .grid_flex {
-        display: flex;
-        margin: 10px 0 10px 0;
-    }
-    .grid_flex-left {
-        overflow: hidden;
-        background-color: var(--white-color);
-        width: 18%;
-        box-shadow: 0 0 3px var(--color-shop);
-        border-radius: 15px ;
-    }
-    .grid_flex-right {
-        background-color: var(--white-color);
-        border-radius: 15px ;
-        margin-left: 10px;
-        width: 82%;
-        display: flex;
-        box-shadow: 0 0 3px var(--color-shop);
-        flex-wrap: wrap;
-        justify-content: center;
-        min-height: 555px;
-    }
-    .grid_flex-left__item {
-        padding: 20px 0 100px 0;
-    }
-    .grid_flex-left__ul {
-        list-style: none;
-    }
-    .grid_flex-left__li {
-        margin: 0 10px;
-        padding: 20px 20px 5px 20px;
-        border-bottom: 1px solid var(--color-shop);
-    }
-    .grid_flex-left__a {
-        text-decoration: none;
-        color: var(--black-color);
-        font-size: 16px;
-    }
-    .grid_flex-left__a:hover {
-        color: var(--color-shop);
-    }
-    .grid_flex-right__img {
-        width: 70%;
-        margin: auto;
-    }
-</style>
-
 </html>

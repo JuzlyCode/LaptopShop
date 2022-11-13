@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
-
+<link rel="stylesheet" href="../assets/css/style.css">
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -26,7 +26,6 @@
         }
         mysqli_close($con);
         if ($error !== false || $result->num_rows == 0) {
-            include '../css.php';
     ?>
             <div class="body">
                 <div class="grid">
@@ -103,7 +102,4 @@
     unset($_SESSION['ok_creat']);
     ?>
 </body>
-<?php
-include '../css.php';
-?>
 </html>

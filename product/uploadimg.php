@@ -1,10 +1,12 @@
 <div style=" width:100%; height:100%; margin: 20px ">
 <?php
+
+use function PHPSTORM_META\type;
+
 include "../product/formPic.php";
 if (!empty($_FILES) && $_FILES["files"]["tmp_name"][0] !== ''){
-    $arrImg = array("image/png", "image/jpeg", "image/bmp");    
-    $err = "Up File Thanh Cong";
-    $type = $_FILES["files"]["type"];
+    $arrImg = array('jpg', 'png', 'jpeg', 'gif');    
+    $type = $_FILES["files"]["name"];
     ?>
     <table class="upload_form-table">
         <tr>
@@ -14,8 +16,17 @@ if (!empty($_FILES) && $_FILES["files"]["tmp_name"][0] !== ''){
         </tr>
     <?php
     foreach ($type as $key => $types){
-        if (!in_array($types, $arrImg))
+        $err = "Up File Thanh Cong";
+        $target_dir = "../assets/image/";
+        $target_file   = $target_dir . basename($types);
+        if (file_exists($target_file) == true){
+                $err = "tên file đã tồn tại ";
+                $name = "error/error.png";
+            }else{
+        if (!in_array(pathinfo($types,PATHINFO_EXTENSION), $arrImg)){
             $err ="Không phải file hình ";
+            $name = "error/error.png";
+        }   
         else
         {	
             $temp = $_FILES["files"]["tmp_name"][$key];
@@ -24,11 +35,20 @@ if (!empty($_FILES) && $_FILES["files"]["tmp_name"][0] !== ''){
                 $err ="Không thể lưu file ";
             
         }
+    }
         $names = $_FILES['files']['name'][$key];
         ?>
             <tr>
                 <td class="upload_form-td upload_form-tdcenter"><?=$err?></td>
-                <td class="upload_form-td upload_form-tdcenter"><a href="../assets/image/<?=$names?>">./assets/image/<?=$names?></a></td>
+                <td class="upload_form-td upload_form-tdcenter">
+                    <?php
+                    if($err =="Không phải file hình " || $err =="tên file đã tồn tại "){
+                    ?>
+                    <?=$err?> [<?=$types?>]
+                    <?php }else{ ?>
+                    <a href="../assets/image/<?=$names?>">./assets/image/<?=$names?></a>
+                    <?php } ?>
+                </td>
                 <td class="upload_form-td upload_form-td__flex"><img src="../assets/image/<?=$name?>" class="view-img__upload" alt="<?=$name?>"></td>
             </tr>
         <?php
@@ -53,7 +73,7 @@ if (!empty($_FILES) && $_FILES["files"]["tmp_name"][0] !== ''){
     }
     .view-img__upload{
     width: 150px;
-    border: 2px solid;
+    /* border: 2px solid; */
     margin: auto;
     }
     .div-in4mAlo {

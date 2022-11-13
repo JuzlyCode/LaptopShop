@@ -3,6 +3,9 @@ $nameLink = '?';
 if(isset($_GET['discount'])){
     $nameLink = '?discount&';
 }
+if(isset($_GET['dsSpham'])){
+    $nameLink = '?dsSpham&';
+}
 // if(isset($_GET['form']) && isset($_GET['to'])){
 //     $nameLink = '?form='.$_GET['form'].'&to='.$_GET['to'].'&';
 // }
