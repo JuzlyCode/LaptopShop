@@ -21,20 +21,20 @@
         if(!empty($_POST['submit']) && $_POST['submit'] == 'UpProduct'){
             $leng = $_POST['nameProduct'];
     
-        for($i = 0 ; $i < strlen($leng); $i++){
-            if($leng[$i] == '"')
-            $leng[$i] = '&quot;';
-            if($leng[$i] == "'")
-            $leng[$i] = '&#39;';
-        }
+        // for($i = 0 ; $i < strlen($leng); $i++){
+        //     if($leng[$i] == '"')
+        //     $leng[$i] = '&quot;';
+        //     if($leng[$i] == "'")
+        //     $leng[$i] = '&#39;';
+        // }
 
-        $lengRv = $_POST['reviewProduct'];
-        for($i = 0 ; $i < strlen($lengRv); $i++){
-            if($lengRv[$i] == '"')
-            $lengRv[$i] = '&quot;';
-            if($lengRv[$i] == "'")
-            $lengRv[$i] = '&#39;';
-        }
+            $lengRv = $_POST['reviewProduct'];
+        // for($i = 0 ; $i < strlen($lengRv); $i++){
+        //     if($lengRv[$i] == '"')
+        //     $lengRv[$i] = '&quot;';
+        //     if($lengRv[$i] == "'")
+        //     $lengRv[$i] = '&#39;';
+        // }
             $alo = "";
             if($_POST['discountProduct'] == "")
             $_POST['discountProduct'] = "0";
@@ -48,8 +48,8 @@
             // kiểm tra và thông báo.
             if(strlen($leng)>300)
             $alo = "Tên sản phẩm không được dài quá 300 ký tự";
-            if(strlen($lengRv)>600)
-            $alo = "Giới thiệu phẩm không được dài quá 600 ký tự";
+            if(strlen($lengRv)>1500)
+            $alo = "Giới thiệu phẩm không được dài quá 1500 ký tự";
             if(strlen($_POST['priceProduct'])>11)
             $alo = "Giá tiền không được hơn 11 số";
             if(strlen($_POST['quantityProduct'])>11)

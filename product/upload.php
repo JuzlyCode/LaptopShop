@@ -14,8 +14,8 @@
             // kiểm tra và thông báo.
             if(strlen($_POST['nameProduct'])>300)
             $alo = "Tên sản phẩm không được dài quá 300 ký tự";
-            if(strlen($_POST['reviewProduct'])>600)
-            $alo = "Giới thiệu phẩm không được dài quá 600 ký tự";
+            if(strlen($_POST['reviewProduct'])>1500)
+            $alo = "Giới thiệu phẩm không được dài quá 1500 ký tự";
             if(strlen($_POST['priceProduct'])>11)
             $alo = "Giá không được hơn 11 số";
             if(strlen($_POST['priceProduct'])>11)
@@ -25,13 +25,15 @@
             // kiểm tra hàm bắt buộc rỗng
             $test = "";
             if($_POST['imgProduct'] == "")
-            $test .= " ảnh,";
+            $test .= " Ảnh.";
             if($_POST['nameProduct'] == "")
-            $test .= " tên,";
+            $test .= " Tên.";
             if($_POST['priceProduct'] == "")
-            $test .= " giá tiền,";
+            $test .= " Giá tiền.";
+            if($_POST['manufacturer'] == "None")
+            $test .= " Hãng SX.";
             if($_POST['quantityProduct'] == "")
-            $test .= " số lượng,";
+            $test .= " Số lượng.";
             if ($test !== ""){
                 $alo = "Không được để trống:  $test";
             }

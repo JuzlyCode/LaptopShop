@@ -28,7 +28,7 @@ $getOffset = 1;
 $offset = ($getOffset - 1) * $getLimit;
 if ($search) {
 $rowProducts = mysqli_query($con, "SELECT * FROM `products` WHERE `title` LIKE '%" . $search . "%'")->num_rows;
-$products = mysqli_query($con, "SELECT * FROM `products` WHERE `title` LIKE '%" . $search . "%' ORDER BY `id` ASC limit " . $getLimit . " OFFSET " . $offset . "");
+$products = mysqli_query($con, "SELECT * FROM `products` WHERE `title` LIKE '%" . $search . "%' ORDER BY `id` DESC limit " . $getLimit . " OFFSET " . $offset . "");
 } else {
 $rowProducts = mysqli_query($con, "SELECT * FROM `products`")->num_rows;
 $products = mysqli_query($con, "SELECT * FROM `products` ORDER BY `id` DESC limit " . $getLimit . " OFFSET " . $offset . "");
@@ -40,7 +40,7 @@ $products = mysqli_query($con, "SELECT * FROM `products` WHERE `discount` ORDER 
 if (isset($_GET['form']) && isset($_GET['to'])) {
 $rowProducts = mysqli_query($con, "SELECT * FROM `products` WHERE `price`")->num_rows;
 // $newCost = mysqli_query($con, "SELECT * FROM `products`");
-$products = mysqli_query($con, "SELECT * FROM `products` WHERE `price` >= " . ($_GET['form'] * 1000000) . " AND `price` <= " . ($_GET['to'] * 1000000) . " ORDER BY `id` ASC limit " . $getLimit . " OFFSET " . $offset . "");
+$products = mysqli_query($con, "SELECT * FROM `products` WHERE `price` >= " . ($_GET['form'] * 1000000) . " AND `price` <= " . ($_GET['to'] * 1000000) . " ORDER BY `id` DESC limit " . $getLimit . " OFFSET " . $offset . "");
 }
 
 $totalpages = ceil($rowProducts / $getLimit);
@@ -57,7 +57,7 @@ mysqli_close($con);
 </div>
 <div class="header-container__search">
 <form class="header-container__search" action="" method="GET">
-<input class="header-container__search-input" type="text" placeholder="Bạn muốn tìm sản phẩm gì?" name="search">
+<input class="header-container__search-input" type="text" placeholder="Bạn muốn tìm sản phẩm gì?" name="search" autocomplete="off">
 <button class="header-container__search-icon" style="padding-top:0;" type="submit">
 <i class="fa-solid fa-magnifying-glass"></i>
 </button>

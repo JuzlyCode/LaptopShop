@@ -44,7 +44,7 @@ if (!empty($_FILES) && $_FILES["files"]["tmp_name"][0] !== ''){
                     <?php
                     if($err =="Không phải file hình " || $err =="tên file đã tồn tại "){
                     ?>
-                    <?=$err?> [<?=$types?>]
+                    <?=$err?> [ <a href="../assets/image/<?=$names?>">./assets/image/<?=$names?></a> ]
                     <?php }else{ ?>
                     <a href="../assets/image/<?=$names?>">./assets/image/<?=$names?></a>
                     <?php } ?>

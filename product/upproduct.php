@@ -102,6 +102,11 @@ if(isset($_GET['idproduct'])){
 
     </tr>
     <tr class="table-upprd__list">
+        <td class="table-upprd__item">Giới thiệu sản phẩm:</td>
+        <td><textarea name="reviewProduct" id="reviewProductt" cols="30" rows="10"><?=$uploads['review']?></textarea></td>
+        <!-- <td><input type="text" class="upprd-input" name="reviewProduct"><br /></td> -->
+    </tr>
+    <tr class="table-upprd__list">
         <td class="table-upprd__item"><label for="manufacturer">Hãng SX:</label></td>
         <td><select name="manufacturer" id="manufacturer">
             <option value="<?=$uploads['manufacturer']?>"><?=$uploads['manufacturer']?>.</option>
@@ -118,11 +123,6 @@ if(isset($_GET['idproduct'])){
             <option value="MSI">MSI.</option>
         </select></td>
     </tr> 
-    <tr class="table-upprd__list">
-        <td class="table-upprd__item">Giới thiệu sản phẩm:</td>
-        <td><textarea name="reviewProduct" id="reviewProductt" cols="30" rows="10"><?=$uploads['review']?></textarea></td>
-        <!-- <td><input type="text" class="upprd-input" name="reviewProduct"><br /></td> -->
-    </tr>
     <tr class="table-upprd__list">
         <td class="table-upprd__item">Giá sản phẩm:</td>
         <td><input type="number" class="upprd-input" name="priceProduct" value="<?=$uploads['price']?>"><br /></td>
@@ -159,8 +159,14 @@ if(isset($_GET['idproduct'])){
             <td><textarea name="nameProduct" id="titleProductt" cols="30" rows="10"></textarea></td>
         </tr>
         <tr class="table-upprd__list">
+            <td class="table-upprd__item">Giới thiệu sản phẩm:</td>
+            <td><textarea name="reviewProduct" id="reviewProductt" cols="30" rows="10"></textarea></td>
+            <!-- <td><input type="text" class="upprd-input" name="reviewProduct"><br /></td> -->
+        </tr>
+        <tr class="table-upprd__list">
             <td class="table-upprd__item"><label for="manufacturer">Hãng SX: (*)</label></td>
             <td><select name="manufacturer" id="manufacturer">
+                <option value="None">None.</option>
                 <option value="Apple">Apple.</option>
                 <option value="Think Pad">Think Pad.</option>
                 <option value="Lenovo">Lenovo.</option>
@@ -174,11 +180,6 @@ if(isset($_GET['idproduct'])){
                 <option value="MSI">MSI.</option>
             </select></td>
         </tr> 
-        <tr class="table-upprd__list">
-            <td class="table-upprd__item">Giới thiệu sản phẩm:</td>
-            <td><textarea name="reviewProduct" id="reviewProductt" cols="30" rows="10"></textarea></td>
-            <!-- <td><input type="text" class="upprd-input" name="reviewProduct"><br /></td> -->
-        </tr>
         <tr class="table-upprd__list">
             <td class="table-upprd__item">Giá sản phẩm: (*)</td>
             <td><input type="number" class="upprd-input" name="priceProduct"><br /></td>

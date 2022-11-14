@@ -11,14 +11,14 @@ for ($i = 0; $i < $prodView->num_rows; $i++) {
 }
 $inProduct = searchProd($prodView);
 // kiểm tra hàng
-if((int)$inProduct['quantity'] > 0)
+if($inProduct['quantity'] > 0)
     $Quantity = 'Còn hàng.';
 else
     $Quantity = 'Hết hàng.';
 // kiểm tra giá
-$per = (int)(($inProduct['price'] / 100) * $inProduct['discount']);
+$per = (($inProduct['price'] / 100) * $inProduct['discount']);
 if($inProduct['discount'] !== '0')
-$newprice = $inProduct['price'] - $per;
+$newprice = floor($inProduct['price'] - $per);
 else
 $newprice = $inProduct['price'];
 // ss giá
@@ -59,7 +59,7 @@ $price = number_format($inProduct['price'],0,' ','.');
         <div class="viewi4-middle__review">
         <div class="viewi4-middle__price-div">
             
-            <p class="viewi4-middle__price">Giá sốc: <?=number_format($newprice,0,' ','.')?></p>
+            <p class="viewi4-middle__price">DEAL: <?=number_format($newprice,0,' ','.')?></p>
             <p class="viewi4-middle__oldprice"><?=$price?></p>
         </div>
         <div class="viewi4-middle__price-div">
@@ -75,9 +75,7 @@ $price = number_format($inProduct['price'],0,' ','.');
             <p class="viewi4-middle__how-text">Giới thiệu: <div class="middle__how-text-sub"><?=$inProduct['review']?></div></p>
         </div>
         </div>
-    </div>
-    <div class="viewi4-product__right">
-    <div class="viewi4-middle__price-div">
+        <div class="viewi4-middle__price-div">
             <fieldset class="fieldset-viewi4">
             <legend class="legend-viewi4"><i class="fa-solid fa-gift"></i> Quà tặng khuyến mãi</legend>
             <div class="fieldser-flex">
@@ -107,12 +105,80 @@ $price = number_format($inProduct['price'],0,' ','.');
             </fieldset>
         </div>
         <div class="viewi4-middle__price-div">
-            <p class="viewi4-middle__btn">Mua ngay</p>
+            <div class="middle__btn-space">
+                <p class="viewi4-middle__btn viewi4-middle__btn-cart">Giỏ hàng</p>
+                <p class="viewi4-middle__btn">Mua ngay</p>
+            </div>
+        </div>
+    </div>
+    <div class="viewi4-product__right">
+        <div class="viewi4-product__promise">
+            <div class="viewi4__promise-header">
+                <p class="viewi4__promise-header-text">SHOP XIN CAM KẾT</p>
+            </div>
+            <div class="viewi4__promise-text">
+                <p class="viewi4__promise-txt-item"><i class="promise-icon fa-solid fa-bolt"></i>Chất lượng sản phẩm là hàng đầu</p>
+                <p class="viewi4__promise-txt-item"><i class="promise-icon fa-solid fa-bolt"></i>Dùng test máy 15 ngày đầu lỗi 1 đổi 1</p>
+                <p class="viewi4__promise-txt-item"><i class="promise-icon fa-solid fa-bolt"></i>Hỗ trợ sau bán hàng tốt nhất</p>
+                <p class="viewi4__promise-txt-item"><i class="promise-icon fa-solid fa-bolt"></i>Giao hàng toàn quốc nhanh nhất</p>
+                <p class="viewi4__promise-txt-item"><i class="promise-icon fa-solid fa-bolt"></i>Trả góp lãi suất 0%</p>
+                <p class="viewi4__promise-txt-item"><i class="promise-icon fa-solid fa-bolt"></i>Không bán máy lỗi</p>
+            </div>
+        </div>
+        <div class="viewi4-product__address">
+            <div class="viewi4__address">
+                <div class="viewi4__address-item">
+                <i class="viewi4__address-icon fa-solid fa-location-dot"></i>
+                </div>
+                <div class="viewi4__address-item">
+                <p class="viewi4__address-txt">152 Cao Lỗ, P. 4, Quận 8, TP. HCM</p>
+                </div>
+            </div>
+            <div class="viewi4__address">
+                <div class="viewi4__address-item">
+                <i class="viewi4__address-icon fa-solid fa-phone-volume"></i>
+                </div>
+                <div class="viewi4__address-item">
+                <p class="viewi4__address-txt">SDT : 038.xxx.xxx</p>
+                </div>
+            </div>
+            <div class="viewi4__address">
+                <div class="viewi4__address-item">
+                <i class="viewi4__address-icon fa-solid fa-envelope"></i>
+                </div>
+                <div class="viewi4__address-item">
+                <p class="viewi4__address-txt">Tantaid19@gmail.com</p>
+                </div>
+            </div>
         </div>
     </div>
 </div>
 
 <style>
+    /*  */
+    .viewi4-product__address {
+        margin-top: 20px;
+        display: flex;
+        flex-wrap: wrap;
+    }
+    .viewi4__address {
+        display: flex;
+        width: 100%;
+        margin: 10px 0;
+    }
+    .viewi4__address-item {
+
+    }
+    .viewi4__address-icon {
+        font-size: 18px;
+        line-height: 18px;
+        margin-right: 10px;
+        color: var(--color-shop);
+    }
+    .viewi4__address-txt {
+        font-size: 16px;
+    }
+    /*  */
     .viewi4-middle__price-div {
         margin-bottom: 10px;
     }
@@ -144,7 +210,8 @@ $price = number_format($inProduct['price'],0,' ','.');
     }
 
     .viewi4-product__middle {
-        width: 40%;
+        padding-right: 20px;
+        width: 45%;
         display: flex;
         flex-direction: column;
     }
@@ -154,6 +221,8 @@ $price = number_format($inProduct['price'],0,' ','.');
     }
     
     .left__img-viewi4 {
+        position: sticky;
+        top: 0;
         width: 300px;
     }
     /* i4 middle */
@@ -189,15 +258,22 @@ $price = number_format($inProduct['price'],0,' ','.');
         margin-left: 10px;
     }
     /* btn */
+    .middle__btn-space {
+        display: flex;
+    }
     .viewi4-middle__btn {
-        width: 100%;
+        width: 49%;
         margin: auto;
+        display: inline-block;
         font-size: 18px;
         color: var(--white-color);
         text-align: center;
         padding: 20px;
         background-color: red;
         border-radius: 5px;
+    }
+    .viewi4-middle__btn-cart {
+        background-color: var(--color-shop);
     }
     .viewi4-middle__btn:hover {
         opacity: .7;
@@ -235,14 +311,42 @@ $price = number_format($inProduct['price'],0,' ','.');
         
     }
     .fieldser-flex {
+        width: 100%;
         margin-bottom: 5px;
         display: inline-flex;
     }
     /* i4 right */
     .viewi4-product__right {
-        width: 30%;
+        width: 25%;
         padding-left: 20px;
-        padding-right: 10px;
+        padding-right: 20px;
+        border-left: 1px solid #ccc;
+        margin: -20px 0 -20px 0;
+    }
+    /*  */
+    .promise-icon {
+        color: orange;
+        margin-right: 10px;
+    }
+    .viewi4__promise-txt-item {
+        margin: 10px 0;
+        font-size: 14px;
+    }
+    .viewi4-product__promise {
+        margin-top: 20px;
+        border-bottom: 1px solid #ccc;
+    }
+    .viewi4__promise-header {
+        margin-bottom: 20px;
+    }
+    .viewi4__promise-header-text {
+        text-align: center;
+        font-size: 18px;
+        font-weight: 700;
+        color:red;
+    }
+    .viewi4__promise-text {
+        margin-bottom: 20px;
     }
     
 </style>
