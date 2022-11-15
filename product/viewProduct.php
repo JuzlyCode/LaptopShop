@@ -118,7 +118,7 @@ $price = number_format($inProduct['price'],0,' ','.');
             </div>
             <div class="viewi4__promise-text">
                 <p class="viewi4__promise-txt-item"><i class="promise-icon fa-solid fa-bolt"></i>Chất lượng sản phẩm là hàng đầu</p>
-                <p class="viewi4__promise-txt-item"><i class="promise-icon fa-solid fa-bolt"></i>Dùng test máy 15 ngày đầu lỗi 1 đổi 1</p>
+                <p class="viewi4__promise-txt-item"><i class="promise-icon fa-solid fa-bolt"></i>30 ngày đầu lỗi 1 đổi 1</p>
                 <p class="viewi4__promise-txt-item"><i class="promise-icon fa-solid fa-bolt"></i>Hỗ trợ sau bán hàng tốt nhất</p>
                 <p class="viewi4__promise-txt-item"><i class="promise-icon fa-solid fa-bolt"></i>Giao hàng toàn quốc nhanh nhất</p>
                 <p class="viewi4__promise-txt-item"><i class="promise-icon fa-solid fa-bolt"></i>Trả góp lãi suất 0%</p>

@@ -100,7 +100,7 @@
                     <?php
                     if(empty($_GET)){
                         ?>
-                        <img class="grid_flex-right__img" src="http://localhost/shop/assets/imgs/admin/Set.png" alt="txt">
+                        <img class="grid_flex-right__img" src="../assets/imgs/admin/Set.png" alt="txt">
                         <?php
                     }
                     if(isset($_GET['listuser'])){
