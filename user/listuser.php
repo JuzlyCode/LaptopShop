@@ -1,10 +1,10 @@
 <?php
     include "../conect_db.php";
-    $result = mysqli_query($con, "SELECT * FROM `user` ORDER BY `user`.`id` ASC");
+    $result = mysqli_query($con, "SELECT * FROM `user` ORDER BY `user`.`idUser` ASC");
 // xóa user
 if (isset($_GET['delete_user']) && isset($_GET['id'])){
     $id=$_GET['id'];
-    mysqli_query($con, "DELETE FROM `user` WHERE `user`.`id` = ".$id."");
+    mysqli_query($con, "DELETE FROM `user` WHERE `user`.`idUser` = ".$id."");
     ?>
     <meta http-equiv="refresh" content="0;url=./admin.php?listuser">
     <?php
@@ -48,12 +48,12 @@ mysqli_close($con);
 
                             ?>
                                 <tr style="text-align: center;">
-                                    <td><?= $row[$i]['id'] ?></td>
+                                    <td><?= $row[$i]['idUser'] ?></td>
                                     <td><?= $row[$i]['username'] ?></td>
                                     <td><?= $row[$i]['status'] ?></td>
                                     <td><?= date('d/m/Y H:i', $row[$i]['creat_date']) ?></td>
-                                    <td><a href="./edit_user.php?id=<?= $row[$i]['id'] ?>" class="style-fix_user">Sửa</a></td>
-                                    <td><a href="./admin.php?listuser&delete_user&id=<?= $row[$i]['id'] ?>" class="style-delete_user">Xóa</a></td>
+                                    <td><a href="./edit_user.php?id=<?= $row[$i]['idUser'] ?>" class="style-fix_user">Sửa</a></td>
+                                    <td><a href="./admin.php?listuser&delete_user&id=<?= $row[$i]['idUser'] ?>" class="style-delete_user">Xóa</a></td>
                                 </tr>
                             <?php
                             }
@@ -81,12 +81,12 @@ mysqli_close($con);
 
                             ?>
                                 <tr class="listuser__tr" style="text-align: center;">
-                                    <td><?= $row[$i]['id'] ?></td>
+                                    <td><?= $row[$i]['idUser'] ?></td>
                                     <td><?= $row[$i]['username'] ?></td>
                                     <td><?= $row[$i]['status'] ?></td>
                                     <td><?= date('d/m/Y H:i', $row[$i]['creat_date']) ?></td>
-                                    <td><a href="./edit_user.php?id=<?= $row[$i]['id'] ?>" class="style-fix_user">Sửa</a></td>
-                                    <td><a href="./admin.php?listuser&delete_user&id=<?= $row[$i]['id'] ?>" class="style-delete_user">Xóa</a></td>
+                                    <td><a href="./edit_user.php?id=<?= $row[$i]['idUser'] ?>" class="style-fix_user">Sửa</a></td>
+                                    <td><a href="./admin.php?listuser&delete_user&id=<?= $row[$i]['idUser'] ?>" class="style-delete_user">Xóa</a></td>
                                 </tr>
                             <?php
                             }

@@ -8,7 +8,7 @@
     $upload = mysqli_query($con, "SELECT * FROM `products`");
     $alo = "";
     if (isset($_GET['delete_product'])){
-        mysqli_query($con, "DELETE FROM `products` WHERE `products`.`id` = ".$_GET['delete_product']."");
+        mysqli_query($con, "DELETE FROM `products` WHERE `products`.`idProduct` = ".$_GET['delete_product']."");
         ?>
         <script>
         window.alert("Đã xóa sản phẩm id: <?=$_GET['delete_product']?> !");
@@ -43,7 +43,7 @@
                 $alo = "Không được giảm giá hơn 100%";
             }else{
                 $alo = "Sửa sản phẩm thành công!";
-                $fixproduct = mysqli_query($con, "UPDATE `products` SET `img` = '".$_POST['imgProduct']."', `title` = '".$leng."', `review` = '".$lengRv."', `price` = '".$_POST['priceProduct']."', `discount` = '".$_POST['discountProduct']."', `quantity` = '".$_POST['quantityProduct']."', `manufacturer` = '".$_POST['manufacturer']."' WHERE `products`.`id` = ".$id.";"); 
+                $fixproduct = mysqli_query($con, "UPDATE `products` SET `img` = '".$_POST['imgProduct']."', `title` = '".$leng."', `review` = '".$lengRv."', `price` = '".$_POST['priceProduct']."', `discount` = '".$_POST['discountProduct']."', `quantity` = '".$_POST['quantityProduct']."', `manufacturer` = '".$_POST['manufacturer']."' WHERE `products`.`idProduct` = ".$id.";"); 
             }
             // kiểm tra và thông báo.
             if(strlen($leng)>300)

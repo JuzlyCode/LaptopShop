@@ -45,7 +45,7 @@
                 $alo = "Không được giảm giá hơn 100%";
 
             if($alo == "Thêm sản phẩm thành công!"){
-                $upload = mysqli_query($con, "INSERT INTO `products` (`id`, `img`, `title`, `review`, `price`, `discount`, `quantity` , `manufacturer`) VALUES (NULL, '".$_POST['imgProduct']."', '".$_POST['nameProduct']."', '".$_POST['reviewProduct']."', '".$_POST['priceProduct']."', '".$_POST['discountProduct']."' , '".$_POST['quantityProduct']."', '".$_POST['manufacturer']."');");
+                $upload = mysqli_query($con, "INSERT INTO `products` (`idProduct`, `img`, `title`, `review`, `price`, `discount`, `quantity` , `manufacturer`) VALUES (NULL, '".$_POST['imgProduct']."', '".$_POST['nameProduct']."', '".$_POST['reviewProduct']."', '".$_POST['priceProduct']."', '".$_POST['discountProduct']."' , '".$_POST['quantityProduct']."', '".$_POST['manufacturer']."');");
             }
     }
 ?>

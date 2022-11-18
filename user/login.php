@@ -16,13 +16,14 @@
     $error = false;
     if (isset($_GET['action']) && $_GET['action'] == 'reg') {
         if (isset($_POST['username']) && !empty($_POST['username']) && isset($_POST['password']) && !empty($_POST['password'])) {
-            $result = mysqli_query($con, "SELECT `id`,`username`,`creat_date`,`password`,`status` FROM `user` WHERE (`username`='" . $_POST['username'] . "' AND `password` = md5('" . $_POST['password'] . "'))");
+            $result = mysqli_query($con, "SELECT `idUser`,`username`,`creat_date`,`password`,`status` FROM `user` WHERE (`username`='" . $_POST['username'] . "' AND `password` = md5('" . $_POST['password'] . "'))");
         }
         if (!$result) {
             $error = 'Error';
         } else {
             $user = mysqli_fetch_assoc($result);
             $_SESSION['current_user'] = $user;
+            $test = $_POST['username'];
         }
         mysqli_close($con);
         if ($error !== false || $result->num_rows == 0) {

@@ -5,7 +5,7 @@ if(isset($_GET['idproduct'])){
     include "../conect_db.php";
     $upload = mysqli_query($con, "SELECT * FROM `products`");
     foreach ($upload as $key => $uploads){
-        if ($uploads['id']==$_GET['idproduct']){
+        if ($uploads['idProduct']==$_GET['idproduct']){
 
                     // hien thi sp cũ
                     ?>
@@ -39,7 +39,7 @@ if(isset($_GET['idproduct'])){
                         <!--  -->
                         <div class="list-produc-php">
                         <div class="produc-php__colums">
-                        <p class="prd-php__cl"><?=$uploads['id']?></p>
+                        <p class="prd-php__cl"><?=$uploads['idProduct']?></p>
                         </div>
                         <div class="produc-php__colums">
                         <img src=".<?=$uploads['img']?>" alt="" class="produc-php__colums-img">
@@ -49,7 +49,7 @@ if(isset($_GET['idproduct'])){
                         <div class="produc-php__colums-btn">Xem
                         <div class="produc-php__hover">
                         <div class="produc-php__hover-header">
-                                <p class="prd-php__cl">Tên sản phẩm id [<?=$uploads['id']?>]</p>
+                                <p class="prd-php__cl">Tên sản phẩm id [<?=$uploads['idProduct']?>]</p>
                         </div>
                         <div class="produc-php__hover-text">
                                 <p class="prd-php__cl"><?=$uploads['title']?></p>
@@ -62,7 +62,7 @@ if(isset($_GET['idproduct'])){
                         <div class="produc-php__colums-btn">Xem
                         <div class="produc-php__hover">
                             <div class="produc-php__hover-header">
-                                <p class="prd-php__cl">Giới thiệu sản phẩm id [<?=$uploads['id']?>]</p>
+                                <p class="prd-php__cl">Giới thiệu sản phẩm id [<?=$uploads['idProduct']?>]</p>
                             </div>
                             <div class="produc-php__hover-text">
                                 <p class="prd-php__cl"><?=$uploads['review']?></p>
@@ -109,18 +109,18 @@ if(isset($_GET['idproduct'])){
     <tr class="table-upprd__list">
         <td class="table-upprd__item"><label for="manufacturer">Hãng SX:</label></td>
         <td><select name="manufacturer" id="manufacturer">
-            <option value="<?=$uploads['manufacturer']?>"><?=$uploads['manufacturer']?>.</option>
-            <option value="Apple">Apple.</option>
-            <option value="Think Pad">Think Pad.</option>
-            <option value="Lenovo">Lenovo.</option>
-            <option value="Sony VAIO">Sony VAIO.</option>
-            <option value="Dell">Dell.</option>
-            <option value="Acer">Acer.</option>
-            <option value="HP">HP.</option>
-            <option value="Sam Sung">Samsung.</option>
-            <option value="Asus">Asus.</option>
-            <option value="Toshiba">Toshiba.</option>
-            <option value="MSI">MSI.</option>
+            <option value="<?=$uploads['manufacturer']?>"><?=$uploads['manufacturer']?></option>
+            <option value="Apple">Apple</option>
+            <option value="Think Pad">Think Pad</option>
+            <option value="Lenovo">Lenovo</option>
+            <option value="Sony VAIO">Sony VAIO</option>
+            <option value="Dell">Dell</option>
+            <option value="Acer">Acer</option>
+            <option value="HP">HP</option>
+            <option value="Sam Sung">Samsung</option>
+            <option value="Asus">Asus</option>
+            <option value="Toshiba">Toshiba</option>
+            <option value="MSI">MSI</option>
         </select></td>
     </tr> 
     <tr class="table-upprd__list">
@@ -166,18 +166,18 @@ if(isset($_GET['idproduct'])){
         <tr class="table-upprd__list">
             <td class="table-upprd__item"><label for="manufacturer">Hãng SX: (*)</label></td>
             <td><select name="manufacturer" id="manufacturer">
-                <option value="None">None.</option>
-                <option value="Apple">Apple.</option>
-                <option value="Think Pad">Think Pad.</option>
-                <option value="Lenovo">Lenovo.</option>
-                <option value="Sony VAIO">Sony VAIO.</option>
-                <option value="Dell">Dell.</option>
-                <option value="Acer">Acer.</option>
-                <option value="HP">HP.</option>
-                <option value="Sam Sung">Samsung.</option>
-                <option value="Asus">Asus.</option>
-                <option value="Toshiba">Toshiba.</option>
-                <option value="MSI">MSI.</option>
+                <option value="None">None</option>
+                <option value="Apple">Apple</option>
+                <option value="Think Pad">Think Pad</option>
+                <option value="Lenovo">Lenovo</option>
+                <option value="Sony VAIO">Sony VAIO</option>
+                <option value="Dell">Dell</option>
+                <option value="Acer">Acer</option>
+                <option value="HP">HP</option>
+                <option value="Sam Sung">Samsung</option>
+                <option value="Asus">Asus</option>
+                <option value="Toshiba">Toshiba</option>
+                <option value="MSI">MSI</option>
             </select></td>
         </tr> 
         <tr class="table-upprd__list">

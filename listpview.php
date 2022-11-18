@@ -35,7 +35,7 @@ for ($i = 0; $i < $products->num_rows; $i++) {
 $inProduct = mysqli_fetch_array($products);
 ?> 
 <div class="container-products__item">
-<a href="./?viewi4=<?=$inProduct['id']?>&id=<?=$inProduct['id']?>">
+<a href="./?viewi4=<?=$inProduct['idProduct']?>&id=<?=$inProduct['idProduct']?>">
 <img src="
 <?= $inProduct['img'] ?>" alt="1" class="container-products__item-img"> 
 </a><?php
@@ -47,7 +47,7 @@ if ($inProduct['discount'] !== '0') {
 <div class="product-discount-persent">- <?= $inProduct['discount'] ?>% </div> <?php
 }
 ?> <div class="container-products__item-review" style="margin-top:10px; min-height: 50px;">
-<a href="./?viewi4=<?=$inProduct['id']?>&id=<?=$inProduct['id']?>" class="container-products__item-review-link">
+<a href="./?viewi4=<?=$inProduct['idProduct']?>&id=<?=$inProduct['idProduct']?>" class="container-products__item-review-link">
 <div class="container-products__item-review-text">
      <?= $inProduct['title'] ?>
 </div>

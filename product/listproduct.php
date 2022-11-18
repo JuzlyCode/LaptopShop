@@ -10,8 +10,8 @@ if (!empty($_GET['limit']) && !empty($_GET['page'])) {
    $getOffset = 1;
 }
 $offset = ($getOffset - 1) * $getLimit;
-$list = mysqli_query($con, "SELECT * FROM `products` ORDER BY `id` DESC limit " . $getLimit . " OFFSET " . $offset . "");
-$rowProducts = mysqli_query($con, "SELECT * FROM `products` ORDER BY `id` DESC")->num_rows;
+$list = mysqli_query($con, "SELECT * FROM `products` ORDER BY `idProduct` DESC limit " . $getLimit . " OFFSET " . $offset . "");
+$rowProducts = mysqli_query($con, "SELECT * FROM `products` ORDER BY `idProduct` DESC")->num_rows;
 $totalpages = ceil($rowProducts / $getLimit);
 $test = mysqli_fetch_all($list);
 ?>
@@ -55,7 +55,7 @@ foreach ($list as $key => $lists){
 ?>
 <div class="list-produc-php">
    <div class="produc-php__colums">
-      <p class="prd-php__cl"><?=$lists['id']?></p>
+      <p class="prd-php__cl"><?=$lists['idProduct']?></p>
    </div>
    <div class="produc-php__colums">
       <img src=".<?=$lists['img']?>" alt="" class="produc-php__colums-img">
@@ -65,7 +65,7 @@ foreach ($list as $key => $lists){
       <div class="produc-php__colums-btn">Xem
       <div class="produc-php__hover">
       <div class="produc-php__hover-header">
-            <p class="prd-php__cl">Tên sản phẩm id [<?=$lists['id']?>]</p>
+            <p class="prd-php__cl">Tên sản phẩm id [<?=$lists['idProduct']?>]</p>
       </div>
       <div class="produc-php__hover-text">
             <p class="prd-php__cl"><?=$lists['title']?></p>
@@ -78,7 +78,7 @@ foreach ($list as $key => $lists){
       <div class="produc-php__colums-btn">Xem
       <div class="produc-php__hover">
          <div class="produc-php__hover-header">
-            <p class="prd-php__cl">Giới thiệu sản phẩm id [<?=$lists['id']?>]</p>
+            <p class="prd-php__cl">Giới thiệu sản phẩm id [<?=$lists['idProduct']?>]</p>
          </div>
          <div class="produc-php__hover-text">
             <p class="prd-php__cl"><?=$lists['review']?></p>
@@ -100,10 +100,10 @@ foreach ($list as $key => $lists){
       <p class="prd-php__cl"><?=$lists['manufacturer']?></p>
    </div>
    <div class="produc-php__colums">
-      <a href="../user/admin.php?idproduct=<?=$lists['id']?>" class="btn-fix-product"><p class="prd-php__cl">Sửa</p></a>
+      <a href="../user/admin.php?idproduct=<?=$lists['idProduct']?>" class="btn-fix-product"><p class="prd-php__cl">Sửa</p></a>
    </div>
    <div class="produc-php__colums">
-      <a href="../user/admin.php?delete_product=<?=$lists['id']?>" class="btn-del-product"><p class="prd-php__cl">Xóa</p></a>
+      <a href="../user/admin.php?delete_product=<?=$lists['idProduct']?>" class="btn-del-product"><p class="prd-php__cl">Xóa</p></a>
    </div>
 </div>
 <?php

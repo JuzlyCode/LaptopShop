@@ -4,7 +4,7 @@ $prodView = mysqli_query($con, "SELECT * FROM `products`");
 function searchProd($prodView){
 for ($i = 0; $i < $prodView->num_rows; $i++) {
     $inProduct = mysqli_fetch_array($prodView);
-    if ($inProduct['id'] == $_GET['id']){
+    if ($inProduct['idProduct'] == $_GET['id']){
         return $inProduct;
     }
 }
@@ -14,7 +14,7 @@ $inProduct = searchProd($prodView);
 if($inProduct['quantity'] > 0)
     $Quantity = 'Còn hàng.';
 else
-    $Quantity = 'Hết hàng.';
+    $Quantity = '<span style="color:red; font-size:16px;">Hết Hàng.<span/>';
 // kiểm tra giá
 $per = (($inProduct['price'] / 100) * $inProduct['discount']);
 if($inProduct['discount'] !== '0')
@@ -30,7 +30,7 @@ $price = number_format($inProduct['price'],0,' ','.');
 <div class="link-in__div">
     <a href="./" class="link-in__link">Home</a>
     <a href="" class="link-in__link">/</a>
-    <a href="./?viewi4=<?=$inProduct['id']?>&id=<?=$inProduct['id']?>" class="link-in__link">This View</a>
+    <a href="./?viewi4=<?=$inProduct['idProduct']?>&id=<?=$inProduct['idProduct']?>" class="link-in__link">This View</a>
 </div>
 <style>
     .link-in__div {
@@ -104,12 +104,21 @@ $price = number_format($inProduct['price'],0,' ','.');
             </div>
             </fieldset>
         </div>
+        <?php if($inProduct['quantity'] > 0){ ?>
         <div class="viewi4-middle__price-div">
             <div class="middle__btn-space">
-                <p class="viewi4-middle__btn viewi4-middle__btn-cart">Giỏ hàng</p>
-                <p class="viewi4-middle__btn">Mua ngay</p>
+                <form action="./cart/cart.php?addcart" method="post">
+                    <!-- push id product -->
+                    <input type="hidden" name="product[<?=$inProduct['idProduct']?>]" value="1">
+                    <input type="submit" name="addCart" class="viewi4-middle__btn viewi4-middle__btn-cart" value="Giỏ hàng"></input>
+                </form>
+                <form action="./cart/cart.php?addcart" method="post">
+                    <!-- push id product -->
+                    <input type="submit" name="" class="viewi4-middle__btn" value="Mua Ngay"></input>
+                </form>
             </div>
         </div>
+        <?php } ?>
     </div>
     <div class="viewi4-product__right">
         <div class="viewi4-product__promise">
@@ -262,15 +271,13 @@ $price = number_format($inProduct['price'],0,' ','.');
         display: flex;
     }
     .viewi4-middle__btn {
-        width: 49%;
-        margin: auto;
-        display: inline-block;
-        font-size: 18px;
-        color: var(--white-color);
-        text-align: center;
-        padding: 20px;
-        background-color: red;
-        border-radius: 5px;
+    font-size: 18px;
+    color: var(--white-color);
+    padding: 10px 20px;
+    background-color: red;
+    border-radius: 5px;
+    border: none;
+    margin-right: 10px;
     }
     .viewi4-middle__btn-cart {
         background-color: var(--color-shop);

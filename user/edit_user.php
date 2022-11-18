@@ -10,7 +10,7 @@
     <title>Sell LapTop</title>
 </head>
 
-<body class="body-class"">
+<body class="body-class">
     <?php
     session_start();
     include "../conect_db.php";
@@ -22,7 +22,7 @@
             if (empty($_POST['password']))
             $error = "* bạn chưa nhập mật khẩu mới";
             if (isset($_POST['username']) && !empty($_POST['username'])) {
-                $resultUser = mysqli_query($con, "UPDATE `user` SET `username` = '" . $_POST['username'] . "' WHERE `user`.`id` = " . $_POST['user_id'] . ";");
+                $resultUser = mysqli_query($con, "UPDATE `user` SET `username` = '" . $_POST['username'] . "' WHERE `user`.`idUser` = " . $_POST['user_id'] . ";");
                 if (!$resultUser) {
                     if (strpos(mysqli_error($con), "Duplicate entry") !== FALSE) {
                         $error = "tên tài khoản đã tồn tại";
@@ -40,8 +40,8 @@
             }
             if ($error !== false || $error !== false) {
                 while ($row = mysqli_fetch_array($result)) {
-                    if ($row['id'] == $_POST['user_id']) {
-                        $id = $row['id'];
+                    if ($row['idUser'] == $_POST['user_id']) {
+                        $id = $row['idUser'];
     ?>
                         <div class="body">
                             <div class="grid">
@@ -96,10 +96,10 @@
                 }
             } else {
                 if (isset($_POST['password']) && !empty($_POST['password'])) {
-                    $resultPass = mysqli_query($con, "UPDATE `user` SET `password` = MD5('" . $_POST['password'] . "') WHERE `user`.`id` = " . $_POST['user_id'] . ";");
+                    $resultPass = mysqli_query($con, "UPDATE `user` SET `password` = MD5('" . $_POST['password'] . "') WHERE `user`.`idUser` = " . $_POST['user_id'] . ";");
                 }
                 if (isset($_POST['status']) && !empty($_POST['status'])) {
-                    $resultPass = mysqli_query($con, "UPDATE `user` SET `status` = '" . $_POST['status'] . "' WHERE `user`.`id` = " . $_POST['user_id'] . ";");
+                    $resultPass = mysqli_query($con, "UPDATE `user` SET `status` = '" . $_POST['status'] . "' WHERE `user`.`idUser` = " . $_POST['user_id'] . ";");
                 }
                 ?>
                 <div class="body">
@@ -120,8 +120,8 @@
             }
         } else {
             while ($row = mysqli_fetch_array($result)) {
-                if ($row['id'] == $_GET['id']) {
-                    if ($_SESSION['current_user']['id'] == $_GET['id'] || $_SESSION['current_user']['status'] == 'admin') {
+                if ($row['idUser'] == $_GET['id']) {
+                    if ($_SESSION['current_user']['idUser'] == $_GET['id'] || $_SESSION['current_user']['status'] == 'admin') {
                 ?>
                         <div class="body">
                             <div class="grid">

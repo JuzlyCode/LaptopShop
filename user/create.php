@@ -32,7 +32,7 @@
             $errorRePassword = '* mật khẩu không giống nhau.';  
             } else {
                 if (isset($_POST['username']) && !empty($_POST['username']) && isset($_POST['password']) && !empty($_POST['password'])) {
-                    $result = mysqli_query($con, "INSERT INTO `user` (`id`, `username`, `password`, `status`, `creat_date`) VALUES (NULL, '" . $_POST['username'] . "', MD5('" . $_POST['password'] . "'), 'user', " . time() . ");");
+                    $result = mysqli_query($con, "INSERT INTO `user` (`idUser`, `username`, `password`, `status`, `creat_date`) VALUES (NULL, '" . $_POST['username'] . "', MD5('" . $_POST['password'] . "'), 'user', " . time() . ");");
                 }
 
                 if (!$result) {
