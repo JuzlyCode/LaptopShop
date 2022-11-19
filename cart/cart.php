@@ -65,11 +65,21 @@ if(isset($_SESSION['current_user'])){
                 </div>
             </div>
             <!-- box product -->
-            <?php for($i=0;$i<$productRow;$i++){ 
-                if(!empty($_SESSION['cart'])){
+            <?php $sum = 0;  
+            if(!empty($_SESSION['cart'])){
+                    for($i=0;$i<$productRow;$i++){
                     $row = mysqli_fetch_array($productList); ?>
-
                 <div class="container-cart__box">
+                    <!-- link sp -->
+                    <div class="cart__box-view">
+                        <div class="box-view">
+                            <a href="../?viewi4=<?=$row['idProduct']?>&id=<?=$row['idProduct']?>" class="box-view__link">
+                                <i class="box-view__icon fa-brands fa-shopify"></i>
+                                <span class="box-view__txt">Xem sản phẩm</span>
+                            </a>
+                        </div>
+                    </div>
+                    <!-- sp -->
                     <div class="cart__box-img">
                         <div class="box-img__flex">
                             <img src=".<?=$row['img']?>" alt="" class="box-img__fix">
@@ -78,7 +88,14 @@ if(isset($_SESSION['current_user'])){
                     </div>
                     <div class="cart__box-item">
                         <div class="box-item__flex">
-                            <p class="box-item__txt"><?=number_format($row['price'],0,' ','.')?></p>
+                            <!-- kiểm tra giảm giá -->
+                            <?php if($row['discount'] !== '0')
+                            $newprice = floor($row['price'] - (($row['price'] / 100) * $row['discount']));
+                            else
+                            $newprice = $row['price'];
+                            $sum += $newprice;
+                            ?>
+                            <p class="box-item__txt"><?=number_format($newprice,0,' ','.')?></p>
                         </div>
                     </div>
                     <div class="cart__box-item">
@@ -107,15 +124,68 @@ if(isset($_SESSION['current_user'])){
                     </div>
                     <?php } ?>
                 </div>
-
-                <?php } 
-            } ?>
+                <?php } ?>
+                <div class="order-cart">
+                    <div class="order-cart__sum">
+                        <div class="order-cart__sum-70">
+                            <p class="cart__sum-txt">Tổng thanh toán</p>
+                        </div>
+                        <div class="order-cart__sum-15 order-cart__primary">
+                        <span class="cart__sum-txt-span"><?=number_format($sum,0,' ','.')?>đ</span>
+                        </div>
+                        <div class="order-cart__sum-15">
+                        </div>
+                    </div>
+                    <div class="order-cart__form">
+                        <form action="" method="post">
+                            <table class="cart__form-table">
+                            <div class="cart__form-item">
+                                <tr class="cart__form-tr">
+                                    <td class="cart__form-td">
+                                        <span class="cart__form-item">Địa chỉ: </span>
+                                    </td>
+                                    <td class="cart__form-td">
+                                        <input type="text" placeholder="" name="" value="">
+                                    </td>
+                                </tr>
+                            </div>
+                            <div class="cart__form-item">
+                                <tr class="cart__form-tr">
+                                    <td class="cart__form-td">
+                                        <span class="cart__form-item">Địa chỉ: </span>
+                                    </td>
+                                    <td class="cart__form-td">
+                                        <input type="text" placeholder="" name="" value="">
+                                    </td>
+                                </tr>
+                            </div>
+                            <div class="cart__form-item">
+                                <tr class="cart__form-tr">
+                                    <td class="cart__form-td">
+                                        <span class="cart__form-item">Địa chỉ: </span>
+                                    </td>
+                                    <td class="cart__form-td">
+                                        <input type="text" placeholder="" name="" value="">
+                                    </td>
+                                </tr>
+                            </div>
+                            </table>
+                        </form>
+                    </div>
+                </div>
+            <?php }else{ ?>
+                <!-- giỏ hàng trống -->
+                <div class="cart-empty">
+                    <div class="cart-empty-box">
+                        <img src="../assets/imgs/cart-empty/cartEmpty.png" alt="" class="cart-empty__img">
+                    </div>
+                </div>
+          <?php  } ?>
         </div>
     </div>
-    <!-- footer -->
-    <div class="footer-cart">
 
-    </div>
+    <!-- footer -->
+    <?php include '../footer.php'; ?>
 </body>
 </html>
 
@@ -127,6 +197,82 @@ if(isset($_SESSION['current_user'])){
 ?>
 
 <style>
+/* order */
+.order-cart {
+    background-color: var(--white-color);
+    margin-bottom: 10px;
+}
+.order-cart__sum {
+    /* background-color: #eaf4ff; */
+    display: flex;
+    border-bottom: 1px solid #ccc;
+}
+.order-cart__primary {
+    background-color: #eaf4ff;
+}
+.order-cart__sum-70 {
+    padding: 10px 0;
+    width: 70%;
+    display: flex;
+    justify-content: center;
+}
+.order-cart__sum-15 {
+    padding: 10px 0;
+    width: 15%;
+    display: flex;
+    justify-content: center;
+}
+.cart__sum-txt {
+    font-size: 14px;
+}
+.cart__sum-txt-span {
+    font-size: 14px;
+    color: red;
+    font-weight: 700;
+}
+.order-cart__form {
+    padding: 20px;
+}
+/* box view */
+.cart__box-view {
+padding: 10px;
+display: flex;
+align-items: center;
+width: 100%;
+background-color: #eaf4ff;
+}
+
+.box-view {
+
+}
+
+.box-view__link {
+    text-decoration: none;
+    margin-left:20px ;
+}
+.box-view__icon,
+.box-view__txt {
+    font-size: 14px;
+    color: var(--color-shop);
+}
+.box-view__icon {
+    margin-right: 10px;
+}
+
+/* cart empty */
+.cart-empty {
+    width: 100%;
+    min-height: 400px;
+    display: flex;
+    background-color: var(--white-color);
+    margin-bottom: 10px;
+}
+.cart-empty-box {
+margin: auto;
+}
+.cart-empty__img {
+    /* width: 100px; */
+}
 /* voucher */
 .box-Voucher {
     margin-left: 30px;
@@ -173,7 +319,12 @@ height: 100%;
     margin: auto;
 }
 .box-item__txt-space {
-
+    max-height: 36px;
+    line-height: 18px;
+    overflow: hidden;
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 2;
     text-align: left;
 }
 /* box header product */
@@ -212,7 +363,7 @@ background-color: var(--white-color);
 }
 
 .container-cart {
-
+    min-height: 400px;
 }
 
 .footer-cart {
@@ -254,7 +405,7 @@ background-color: var(--white-color);
 .header-cart__list {
 width: 100%;
 background-color: var(--color-shop);
-padding: 5px;
+padding: 8px;
 }
 
 .cart-list {

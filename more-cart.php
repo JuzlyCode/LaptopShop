@@ -12,6 +12,7 @@ if (!empty($_SESSION['cart'])) {
         <div class="more-cart__header">
             Sản Phẩm Mới Thêm
         </div>
+        <div class="more-cart__hidden">
         <?php for ($i = 0; $i < $productRow; $i++) {
             if (!empty($_SESSION['cart'])) {
                 $row = mysqli_fetch_array($productList); ?>
@@ -31,6 +32,7 @@ if (!empty($_SESSION['cart'])) {
                 </a>
         <?php  }
         } ?>
+        </div>
         <div class="more-cart__footer">
             <span style="color:#666;">Có <?= $productRow ?> sản phẩm trong giỏ</span>
             <a href="./cart/cart.php">
@@ -42,7 +44,14 @@ if (!empty($_SESSION['cart'])) {
 
 <style>
      /* more cart */
-  .neo-more__card{
+.more-cart__hidden {
+max-height: 300px;
+overflow-y: scroll;
+}
+.more-cart__hidden::-webkit-scrollbar {
+    display: none;
+}
+.neo-more__card{
     
 }
 .cart-icon {
@@ -60,7 +69,17 @@ if (!empty($_SESSION['cart'])) {
   right: -74px;
   box-shadow:0 0 5px #ccc;
   z-index: 3;
+  animation: showAnimation ease-in .2s;
   display: none;
+}
+@keyframes showAnimation {
+	from {
+		opacity: 0;
+	}
+
+	to {
+		opacity: 1;
+	}
 }
 .more-cart::before{
   content: "";
@@ -105,6 +124,9 @@ if (!empty($_SESSION['cart'])) {
   height: 24px;
   overflow: hidden;
   margin: auto;
+  display: -webkit-box;
+	-webkit-box-orient: vertical;
+	-webkit-line-clamp: 2;
 }
 .more-cart__price {
   color: red;

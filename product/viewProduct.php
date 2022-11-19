@@ -107,12 +107,12 @@ $price = number_format($inProduct['price'],0,' ','.');
         <?php if($inProduct['quantity'] > 0){ ?>
         <div class="viewi4-middle__price-div">
             <div class="middle__btn-space">
-                <form action="./cart/cart.php?addcart" method="post">
+                <form action="<?php if(isset($_SESSION['current_user'])){ ?>./cart/cart.php?addcart<?php }else{?>./user/login.php<?php }?>" method="post">
                     <!-- push id product -->
                     <input type="hidden" name="product[<?=$inProduct['idProduct']?>]" value="1">
                     <input type="submit" name="addCart" class="viewi4-middle__btn viewi4-middle__btn-cart" value="Giỏ hàng"></input>
                 </form>
-                <form action="./cart/cart.php?addcart" method="post">
+                <form action="<?php if(isset($_SESSION['current_user'])){ ?>./cart/cart.php?addcart<?php }else{?>./user/login.php<?php }?>" method="post">
                     <!-- push id product -->
                     <input type="submit" name="" class="viewi4-middle__btn" value="Mua Ngay"></input>
                 </form>
