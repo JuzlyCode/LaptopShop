@@ -1,8 +1,8 @@
 <!-- up sp -->
 <div style="width:100%; margin:20px 40px 0 40px;">
-<fieldset class="fieldset-upload">
-    <legend class="legend-upload">UpLoad Sản Phẩm</legend>
-<?php
+    <fieldset class="fieldset-upload">
+        <legend class="legend-upload">UpLoad Sản Phẩm</legend>
+        <?php
     include "../conect_db.php";
     $upload = mysqli_query($con, "SELECT * FROM `products`");
     // foreach ($upload as $key => $values) {
@@ -49,23 +49,24 @@
             }
     }
 ?>
-    <div class="div-in4mAlo">
-        <p class="in4mAlo" style="<?php if ($alo == "Thêm sản phẩm thành công!"){ ?> color: green;<?php }else{ ?>color:red;<?php } ?>"><?=$alo?></p>
-    </div>
-<?php
+        <div class="div-in4mAlo">
+            <p class="in4mAlo"
+                style="<?php if ($alo == "Thêm sản phẩm thành công!"){ ?> color: green;<?php }else{ ?>color:red;<?php } ?>">
+                <?=$alo?></p>
+        </div>
+        <?php
     include '../product/upproduct.php';
 ?>
-</fieldset>
+    </fieldset>
 </div>
 <style>
 .div-in4mAlo {
     margin-top: 10px;
     display: flex;
 }
+
 .in4mAlo {
     font-size: 18px;
     margin: auto;
 }
 </style>
-
-

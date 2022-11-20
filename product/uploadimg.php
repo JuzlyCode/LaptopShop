@@ -1,5 +1,5 @@
 <div style=" width:100%; height:100%; margin: 20px ">
-<?php
+    <?php
 
 use function PHPSTORM_META\type;
 
@@ -14,7 +14,7 @@ if (!empty($_FILES) && $_FILES["files"]["tmp_name"][0] !== ''){
             <td class="upload_form-td upload_form-tdcenter">Link Ảnh</td>
             <td class="upload_form-td upload_form-tdcenter">Ảnh</td>
         </tr>
-    <?php
+        <?php
     foreach ($type as $key => $types){
         $err = "Up File Thanh Cong";
         $target_dir = "../assets/image/";
@@ -38,19 +38,20 @@ if (!empty($_FILES) && $_FILES["files"]["tmp_name"][0] !== ''){
     }
         $names = $_FILES['files']['name'][$key];
         ?>
-            <tr>
-                <td class="upload_form-td upload_form-tdcenter"><?=$err?></td>
-                <td class="upload_form-td upload_form-tdcenter">
-                    <?php
+        <tr>
+            <td class="upload_form-td upload_form-tdcenter"><?=$err?></td>
+            <td class="upload_form-td upload_form-tdcenter">
+                <?php
                     if($err =="Không phải file hình " || $err =="tên file đã tồn tại "){
                     ?>
-                    <?=$err?> [ <a href="../assets/image/<?=$names?>">./assets/image/<?=$names?></a> ]
-                    <?php }else{ ?>
-                    <a href="../assets/image/<?=$names?>">./assets/image/<?=$names?></a>
-                    <?php } ?>
-                </td>
-                <td class="upload_form-td upload_form-td__flex"><img src="../assets/image/<?=$name?>" class="view-img__upload" alt="<?=$name?>"></td>
-            </tr>
+                <?=$err?> [ <a href="../assets/image/<?=$names?>">./assets/image/<?=$names?></a> ]
+                <?php }else{ ?>
+                <a href="../assets/image/<?=$names?>">./assets/image/<?=$names?></a>
+                <?php } ?>
+            </td>
+            <td class="upload_form-td upload_form-td__flex"><img src="../assets/image/<?=$name?>"
+                    class="view-img__upload" alt="<?=$name?>"></td>
+        </tr>
         <?php
     }
     ?>
@@ -63,35 +64,42 @@ if (!empty($_FILES) && $_FILES["files"]["tmp_name"][0] !== ''){
 </div>
 
 <style>
-    .upload-img__btn {
-        margin-top: 10px;
-        margin-bottom: 20px;
-        padding: 2px 10px;
-    }
-    .upload_form-td__flex {
-        display: flex;
-    }
-    .view-img__upload{
+.upload-img__btn {
+    margin-top: 10px;
+    margin-bottom: 20px;
+    padding: 2px 10px;
+}
+
+.upload_form-td__flex {
+    display: flex;
+}
+
+.view-img__upload {
     width: 150px;
     /* border: 2px solid; */
     margin: auto;
-    }
-    .div-in4mAlo {
-        width: 100%;
-        text-align: center;
-        margin: 10px;
-    }
-    .in4mAlo {
-        font-size: 18px;
-    }
-    .upload_form-td {
-        border: 2px solid black;
-    }
-    .upload_form-tdcenter {
-        text-align: center;
-    }
-    .upload_form-table {
-        width: 100%;
-        border: 2px solid black;
-    }
+}
+
+.div-in4mAlo {
+    width: 100%;
+    text-align: center;
+    margin: 10px;
+}
+
+.in4mAlo {
+    font-size: 18px;
+}
+
+.upload_form-td {
+    border: 2px solid black;
+}
+
+.upload_form-tdcenter {
+    text-align: center;
+}
+
+.upload_form-table {
+    width: 100%;
+    border: 2px solid black;
+}
 </style>

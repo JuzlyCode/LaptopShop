@@ -1,9 +1,9 @@
 <link rel="stylesheet" href="../assets/css/fix-product.css">
 <!-- up sp -->
 <div style="width:100%; margin:20px 40px 0 40px;">
-<fieldset class="fieldset-upload">
-    <legend class="legend-upload">Sửa Sản Phẩm</legend>
-<?php
+    <fieldset class="fieldset-upload">
+        <legend class="legend-upload">Sửa Sản Phẩm</legend>
+        <?php
     include "../conect_db.php";
     $upload = mysqli_query($con, "SELECT * FROM `products`");
     $alo = "";
@@ -59,8 +59,8 @@
     }
     
 ?>
-<?php
+        <?php
     include '../product/upproduct.php';
 ?>
-</fieldset>
+    </fieldset>
 </div>

@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <link rel="stylesheet" href="../assets/css/style.css">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -28,79 +29,86 @@
         mysqli_close($con);
         if ($error !== false || $result->num_rows == 0) {
     ?>
-            <div class="body">
-                <div class="grid">
-                    <div class="form-login">
-                        <div class="space-logo__login">   
+    <div class="body">
+        <div class="grid">
+            <div class="form-login">
+                <div class="space-logo__login">
                     <a href="../">
-                    <img src="../assets/imgs/containerHeader/Logo.png" class="logo__Login" alt="">
-                        </a>
-                    </div>
-                        <form class="form-flex" action="./login.php?action=reg" method="Post" autocomplete="off">
-                            <div class="form-login__input-size">
-                                <p class="form-login__input-text" style="color: red;">* thông tin không chính xác</p>
-                                
-                                <input type="text" placeholder="User Name" name="username" required="" class="form-login__input" value="">
-                            </div>
-                            <div class="form-login__input-size">
-                                
-                                <input type="password" placeholder="Password" name="password" required="" class="form-login__input" value="">
-                            </div>
-                            <div class="form-login__btn-size">
-                                <input class="form-login__btn-style" type="submit" value="Đăng nhập">
-                            </div>
-                        </form>
-                        <div class="clear"></div>
-                        <label class="form-login__Blank">bạn chưa có tài khoản? <a href="../user/create.php" class="form-login__Blank-a">Đăng ký</a></label>
-                    </div>
+                        <img src="../assets/imgs/containerHeader/Logo.png" class="logo__Login" alt="">
+                    </a>
                 </div>
+                <form class="form-flex" action="./login.php?action=reg" method="Post" autocomplete="off">
+                    <div class="form-login__input-size">
+                        <p class="form-login__input-text" style="color: red;">* thông tin không chính xác</p>
+
+                        <input type="text" placeholder="User Name" name="username" required="" class="form-login__input"
+                            value="">
+                    </div>
+                    <div class="form-login__input-size">
+
+                        <input type="password" placeholder="Password" name="password" required=""
+                            class="form-login__input" value="">
+                    </div>
+                    <div class="form-login__btn-size">
+                        <input class="form-login__btn-style" type="submit" value="Đăng nhập">
+                    </div>
+                </form>
+                <div class="clear"></div>
+                <label class="form-login__Blank">bạn chưa có tài khoản? <a href="../user/create.php"
+                        class="form-login__Blank-a">Đăng ký</a></label>
             </div>
-        <?php
+        </div>
+    </div>
+    <?php
             exit;
         }
     }
     if (empty($_SESSION['current_user'])) {
         ?>
-        <div class="body">
-            <div class="grid">
-                <div class="form-login">
-                    <div class="space-logo__login">   
+    <div class="body">
+        <div class="grid">
+            <div class="form-login">
+                <div class="space-logo__login">
                     <a href="../">
-                    <img src="../assets/imgs/containerHeader/Logo.png" class="logo__Login" alt="">
-                        </a>
-                    </div>
-                    <?php
+                        <img src="../assets/imgs/containerHeader/Logo.png" class="logo__Login" alt="">
+                    </a>
+                </div>
+                <?php
                     if (!empty($_SESSION['ok_creat'])) {
                     ?>
-                        <h1 style="text-align:center; margin-bottom:30px; color:green;">Đăng ký tài khoản thành công!</h1>
-                    <?php
+                <h1 style="text-align:center; margin-bottom:30px; color:green;">Đăng ký tài khoản thành công!</h1>
+                <?php
                     }
                     ?>
-                    
-                    <form class="form-flex" action="./login.php?action=reg" method="Post" autocomplete="off">
-                        <div class="form-login__input-size">
-                            
-                            <input type="text" placeholder="User Name" name="username" required="" class="form-login__input" value="">
-                        </div>
-                        <div class="form-login__input-size">
-                            
-                            <input type="password" placeholder="Password" name="password" required="" class="form-login__input" value="">
-                        </div>
-                        <div class="form-login__btn-size" style="width:100%;">
-                            <input class="form-login__btn-style" type="submit" value="Đăng nhập">
-                        </div>
-                    </form>
-                    <div class="clear"></div>
-                    <label class="form-login__Blank">bạn chưa có tài khoản? <a href="../user/create.php" class="form-login__Blank-a">Đăng ký</a></label>
-                </div>
+
+                <form class="form-flex" action="./login.php?action=reg" method="Post" autocomplete="off">
+                    <div class="form-login__input-size">
+
+                        <input type="text" placeholder="User Name" name="username" required="" class="form-login__input"
+                            value="">
+                    </div>
+                    <div class="form-login__input-size">
+
+                        <input type="password" placeholder="Password" name="password" required=""
+                            class="form-login__input" value="">
+                    </div>
+                    <div class="form-login__btn-size" style="width:100%;">
+                        <input class="form-login__btn-style" type="submit" value="Đăng nhập">
+                    </div>
+                </form>
+                <div class="clear"></div>
+                <label class="form-login__Blank">bạn chưa có tài khoản? <a href="../user/create.php"
+                        class="form-login__Blank-a">Đăng ký</a></label>
             </div>
         </div>
+    </div>
     <?php
     } else {
     ?>
-        <meta http-equiv="refresh" content="0;url=../">
+    <meta http-equiv="refresh" content="0;url=../">
     <?php }
     unset($_SESSION['ok_creat']);
     ?>
 </body>
+
 </html>

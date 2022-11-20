@@ -18,7 +18,8 @@
             <div class="header-container">
                 <div class="header-container__logo">
                     <a href="../index.php">
-                        <img src="../assets/imgs/containerHeader/Logo.png" alt="Logo" class="header-container__logo-size">
+                        <img src="../assets/imgs/containerHeader/Logo.png" alt="Logo"
+                            class="header-container__logo-size">
                     </a>
                     <!-- logo img -->
                 </div>
@@ -43,7 +44,7 @@
                             </a>
                             <a href="./logout.php?logout" class="header-menu_product-link">
                                 <li style="padding:0 30px;" class="header-menu_product-item">
-                                <i class="fix-item-icon fa-solid fa-circle-xmark"></i>
+                                    <i class="fix-item-icon fa-solid fa-circle-xmark"></i>
                                     <p class="product-item_name">Logout</p>
                                 </li>
                             </a>
@@ -52,17 +53,18 @@
                     <div class="header-menu_user">
                         <ul class="header-menu_product-list">
                             <li class="header-menu_product-item">
-                                    <?php
+                                <?php
                                     session_start();
                                 if (!empty($_SESSION['current_user'])){
                                     ?>
-                                        <i class="fix-item-icon fa-solid fa-user"></i>
-                                        <a class="header-menu_product-link product-link_style" href=""> Xin chào <?= $_SESSION['current_user']['username'] ?> </a>
-                                    <?php
+                                <i class="fix-item-icon fa-solid fa-user"></i>
+                                <a class="header-menu_product-link product-link_style" href=""> Xin chào
+                                    <?= $_SESSION['current_user']['username'] ?> </a>
+                                <?php
                                 }
                                 
                             ?>
-                            
+
                             </li>
                         </ul>
                     </div>
@@ -76,7 +78,7 @@
                 <div class="grid_flex-left">
                     <div class="grid_flex-left__header">
                         <p class="grid_flex-left__header-text">
-                        <a href="./admin.php" class="left__link-header">ADmin Page</a>
+                            <a href="./admin.php" class="left__link-header">ADmin Page</a>
                         </p>
                     </div>
                     <div class="grid_flex-left__item">
@@ -100,8 +102,8 @@
                     <?php
                     if(empty($_GET)){
                         ?>
-                        <img class="grid_flex-right__img" src="../assets/imgs/admin/Set.png" alt="txt">
-                        <?php
+                    <img class="grid_flex-right__img" src="../assets/imgs/admin/Set.png" alt="txt">
+                    <?php
                     }
                     if(isset($_GET['listuser'])){
                         include './listuser.php';
@@ -124,4 +126,5 @@
         </div>
     </div>
 </body>
+
 </html>
